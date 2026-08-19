@@ -355,16 +355,6 @@ export default function AdminLayout({
                 </div>
               </div>
             </div>
-
-            {/* Clean Professional Sign Out Button */}
-            <button
-              onClick={handleAdminLogout}
-              title="Sign Out of Admin Portal"
-              className="flex items-center gap-1.5 bg-slate-100 hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200 hover:border-red-200 font-bold text-xs px-3 py-1.5 rounded-xl transition font-mono cursor-pointer"
-            >
-              <LogOut className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Sign Out</span>
-            </button>
           </div>
         </div>
       </header>
