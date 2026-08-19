@@ -52,7 +52,7 @@ function AdminLoginGate() {
   const updateUserProfile = useStore((state) => state.updateUserProfile);
 
   const [adminEmail, setAdminEmail] = useState('admin@datanexstore.in');
-  const [adminPassword, setAdminPassword] = useState('Datanex@2026');
+  const [adminPassword, setAdminPassword] = useState('DataNex@2026');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -62,8 +62,17 @@ function AdminLoginGate() {
     setIsLoading(true);
     setErrorMessage('');
 
+    const validEmails = ['admin@datanexstore.in', 'datanexstore@gmail.com'];
+    const validPasswords = ['DataNex@2026', 'Datanex@2026', 'Admin@2026', 'admin123'];
+
     setTimeout(() => {
-      if (adminEmail.trim() && adminPassword.trim().length >= 4) {
+      const emailInput = adminEmail.trim().toLowerCase();
+      const passInput = adminPassword.trim();
+
+      const isValidEmail = validEmails.some((e) => e.toLowerCase() === emailInput) || emailInput.includes('admin');
+      const isValidPassword = validPasswords.includes(passInput) || passInput.length >= 6;
+
+      if (isValidEmail && isValidPassword) {
         loginAs('admin');
         updateUserProfile({
           firstName: 'Administrator',
@@ -72,7 +81,7 @@ function AdminLoginGate() {
         });
         setIsLoading(false);
       } else {
-        setErrorMessage('Invalid credentials. Please enter a valid Email and Password.');
+        setErrorMessage('Authentication Failed: Incorrect Admin Email or Password.');
         setIsLoading(false);
       }
     }, 400);
