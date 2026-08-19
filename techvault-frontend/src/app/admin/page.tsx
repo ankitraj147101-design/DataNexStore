@@ -202,7 +202,7 @@ export default function AdminDashboardPage() {
           <div className="h-72 w-full">
             {isClient && (
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={adminStats.salesChartData}>
+                <AreaChart data={adminStats.revenueHistory}>
                   <defs>
                     <linearGradient id="revenueGrad" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#0284c7" stopOpacity={0.25} />
@@ -265,7 +265,7 @@ export default function AdminDashboardPage() {
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
-                    data={adminStats.categorySalesData}
+                    data={adminStats.categorySales}
                     cx="50%"
                     cy="50%"
                     innerRadius={50}
@@ -273,7 +273,7 @@ export default function AdminDashboardPage() {
                     paddingAngle={4}
                     dataKey="value"
                   >
-                    {adminStats.categorySalesData.map((_, index) => (
+                    {adminStats.categorySales.map((entry, index) => (
                       <Cell
                         key={`cell-${index}`}
                         fill={CATEGORY_COLORS[index % CATEGORY_COLORS.length]}
@@ -296,14 +296,14 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="space-y-2 pt-2 border-t border-slate-100 text-xs font-mono">
-            {adminStats.categorySalesData.map((item, idx) => (
+            {adminStats.categorySales.map((item, idx) => (
               <div key={idx} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <span
                     className="w-2.5 h-2.5 rounded-full"
                     style={{ backgroundColor: CATEGORY_COLORS[idx % CATEGORY_COLORS.length] }}
                   ></span>
-                  <span className="text-slate-700 font-medium">{item.name}</span>
+                  <span className="text-slate-700 font-medium">{item.category}</span>
                 </div>
                 <span className="font-bold text-slate-950">₹{item.value.toLocaleString()}</span>
               </div>
@@ -339,7 +339,7 @@ export default function AdminDashboardPage() {
               <div key={order.id} className="py-3.5 flex items-center justify-between gap-3 text-xs">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className="font-black text-slate-900 font-mono">{order.id}</span>
+                    <span className="font-black text-slate-900 font-mono">{order.orderNumber || `ORD-${order.id}`}</span>
                     <span
                       className={`text-[9px] font-black px-2 py-0.5 rounded-full font-mono uppercase ${
                         order.status === 'DELIVERED'
@@ -362,7 +362,7 @@ export default function AdminDashboardPage() {
                     ₹{order.totalAmount.toLocaleString()}
                   </div>
                   <div className="text-[10px] text-slate-400">
-                    {order.paymentMethod}
+                    {order.payment?.paymentMethod || 'PREPAID'}
                   </div>
                 </div>
               </div>
