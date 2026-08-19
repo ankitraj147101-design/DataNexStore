@@ -113,7 +113,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
   };
 
   const currentPrice = selectedVariant ? selectedVariant.price : product.basePrice;
-  const currentMrp = selectedVariant && selectedVariant.compareAtPrice ? selectedVariant.compareAtPrice : product.mrp;
+  const currentMrp = selectedVariant ? selectedVariant.mrpPrice : product.mrpPrice;
   const discountPercent = Math.round(((currentMrp - currentPrice) / currentMrp) * 100);
 
   return (
@@ -396,13 +396,13 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {Object.entries(product.specifications).map(([key, val]) => (
+            {product.specifications.map((spec) => (
               <div
-                key={key}
+                key={spec.fieldKey}
                 className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-50/70 border border-slate-100 text-xs"
               >
-                <span className="font-mono text-slate-500 uppercase tracking-wider">{key}</span>
-                <span className="font-bold text-slate-900 font-mono text-right">{String(val)}</span>
+                <span className="font-mono text-slate-500 uppercase tracking-wider">{spec.fieldName}</span>
+                <span className="font-bold text-slate-900 font-mono text-right">{spec.fieldValue}</span>
               </div>
             ))}
           </div>
