@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --surface: #ffffff;
+    --surface-elevated: #ffffff;
+    --surface-hover: #f8fafc;
+    --border: #e2e8f0;
+    --border-bright: #cbd5e1;
+    
+    --foreground: #0f172a;
+    --muted-foreground: #475569;
+    --subtle-foreground: #64748b;
+    
+    --primary: #0284c7;
+    --primary-glow: rgba(2, 132, 199, 0.15);
+    --primary-dark: #0369a1;
+    
+    --accent: #0284c7;
+    --accent-glow: rgba(2, 132, 199, 0.15);
+  }
+}
+
+/* Apple San Francisco (SF Pro) Typography Stack */
+body {
+  background-color: #ffffff;
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+/* Headings: Apple SF Pro Display with Apple-signature tracking */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "SF Pro", "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.022em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Monospace: Apple SF Mono */
+code, pre, .font-mono {
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  letter-spacing: -0.01em;
+}
+
+/* Apple SF Compact / Special Badges */
+.font-compact {
+  font-family: "SF Compact Display", "SF Compact Text", -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* Smooth Apple Selection */
+::selection {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+/* Clean Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
