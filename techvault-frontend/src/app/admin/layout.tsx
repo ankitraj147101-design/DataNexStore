@@ -292,18 +292,15 @@ export default function AdminLayout({
 
             <div className="h-5 w-px bg-slate-200 hidden sm:block"></div>
 
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center text-sky-400 shadow-xs">
-                <Zap className="w-4 h-4 fill-sky-400" />
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-base font-black tracking-tight text-slate-900 font-mono">
-                  DATANEX<span className="text-sky-600">STORE</span>
-                </span>
-                <span className="bg-slate-900 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
-                  Admin
-                </span>
-              </div>
+            <div className="flex items-center gap-2">
+              <img
+                src="/datanexstore-logo.jpg"
+                alt="DataNexStore Logo"
+                className="h-8 w-auto object-contain"
+              />
+              <span className="bg-slate-900 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
+                Admin
+              </span>
             </div>
           </div>
 

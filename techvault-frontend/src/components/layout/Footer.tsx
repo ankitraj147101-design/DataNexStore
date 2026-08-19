@@ -78,13 +78,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
           {/* Company Bio */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-sky-400 shadow-xs">
-                <Zap className="w-5 h-5 fill-sky-400" />
-              </div>
-              <span className="text-2xl font-black tracking-tight text-slate-900">
-                DATANEX<span className="text-sky-600">STORE</span>
-              </span>
+            <Link href="/" className="flex items-center group">
+              <img
+                src="/datanexstore-logo.jpg"
+                alt="DataNexStore Logo"
+                className="h-10 w-auto object-contain group-hover:opacity-90 transition-opacity"
+              />
             </Link>
 
             <p className="text-xs text-slate-600 leading-relaxed max-w-sm">

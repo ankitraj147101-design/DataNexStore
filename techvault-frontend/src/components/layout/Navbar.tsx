@@ -86,18 +86,12 @@ export default function Navbar() {
           
           {/* Brand Logo & Name */}
           <div className="flex items-center gap-3 sm:gap-6 shrink-0">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-900 flex items-center justify-center text-sky-400 shadow-md group-hover:scale-105 transition-transform">
-                <Zap className="w-4 h-4 sm:w-5 sm:h-5 fill-sky-400" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-base sm:text-xl font-black tracking-tight text-slate-900">
-                  DATANEX<span className="text-sky-600">STORE</span>
-                </span>
-                <span className="hidden sm:block text-[9px] uppercase tracking-widest text-slate-500 font-mono -mt-1 font-bold">
-                  Electronics & Hardware
-                </span>
-              </div>
+            <Link href="/" className="flex items-center group">
+              <img
+                src="/datanexstore-logo.jpg"
+                alt="DataNexStore Logo"
+                className="h-9 sm:h-11 w-auto object-contain group-hover:opacity-90 transition-opacity"
+              />
             </Link>
 
             {/* Category Dropdown Button (Desktop) */}
