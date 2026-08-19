@@ -113,7 +113,7 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 w-full px-4 sm:px-8 lg:px-12 py-8 space-y-8">
+      <main className="flex-1 w-full px-3 sm:px-8 lg:px-12 py-4 sm:py-8 space-y-6 pb-24 sm:pb-8">
         {/* Profile Hero Header Card */}
         <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">

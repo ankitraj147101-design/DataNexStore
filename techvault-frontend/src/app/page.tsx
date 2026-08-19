@@ -15,7 +15,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white text-slate-900 flex flex-col selection:bg-sky-600 selection:text-white">
       <Navbar />
 
-      <main className="flex-1 w-full px-4 sm:px-8 lg:px-12 py-8 space-y-16">
+      <main className="flex-1 w-full px-3 sm:px-8 lg:px-12 py-4 sm:py-8 space-y-8 sm:space-y-16 pb-24 sm:pb-8">
         {/* Flagship Hero Carousel */}
         <HeroBanner />
 

@@ -18,8 +18,8 @@ export default function WishlistPage() {
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        <div className="border-b border-slate-200 pb-6">
+      <main className="flex-1 w-full px-3 sm:px-8 lg:px-12 py-4 sm:py-8 space-y-6 pb-24 sm:pb-8">
+        <div className="border-b border-slate-200 pb-4 sm:pb-6">
           <div className="text-xs font-mono uppercase tracking-widest text-sky-700 font-bold mb-1">
             Saved Hardware Items
           </div>
@@ -32,7 +32,7 @@ export default function WishlistPage() {
         </div>
 
         {wishlistProducts.length === 0 ? (
-          <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center space-y-4 max-w-md mx-auto shadow-xs">
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 text-center space-y-4 max-w-md mx-auto shadow-xs">
             <Heart className="w-12 h-12 text-slate-300 mx-auto" />
             <h2 className="text-lg font-bold text-slate-900">Your wishlist is empty</h2>
             <p className="text-xs text-slate-500">
@@ -40,14 +40,14 @@ export default function WishlistPage() {
             </p>
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-xs"
+              className="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-xs font-mono"
             >
               <span>Browse Catalog</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
             {wishlistProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

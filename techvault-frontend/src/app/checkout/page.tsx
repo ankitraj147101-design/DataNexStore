@@ -279,7 +279,7 @@ ${discount > 0 ? `• *Coupon Discount (${appliedCoupon?.code}):* -₹${discount
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="flex-1 w-full px-3 sm:px-8 lg:px-12 py-4 sm:py-8 space-y-6 pb-24 sm:pb-8">
         {/* Step Progress Bar */}
         <div className="bg-white border border-slate-200 rounded-2xl p-4 shadow-xs">
           <div className="flex items-center justify-between max-w-2xl mx-auto text-xs font-bold">

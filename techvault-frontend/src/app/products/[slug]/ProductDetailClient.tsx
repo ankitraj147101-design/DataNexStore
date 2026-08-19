@@ -120,7 +120,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 w-full px-4 sm:px-8 lg:px-12 py-6 space-y-8">
+      <main className="flex-1 w-full px-3 sm:px-8 lg:px-12 py-4 sm:py-6 space-y-6 sm:space-y-8 pb-24 sm:pb-8">
         {/* Breadcrumb Bar */}
         <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
           <Link href="/" className="hover:text-sky-600 transition">

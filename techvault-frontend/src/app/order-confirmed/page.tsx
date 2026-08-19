@@ -142,7 +142,7 @@ ${latestOrder.discountAmount > 0 ? `• *Coupon Discount (${latestOrder.couponCo
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="flex-1 max-w-4xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-10 space-y-6 pb-24 sm:pb-10">
         
         {/* Real-time Order & WhatsApp Verification Banner */}
         <div className="text-center space-y-4 bg-white border border-slate-200 rounded-3xl p-8 shadow-xs">
