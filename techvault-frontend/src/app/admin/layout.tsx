@@ -409,27 +409,8 @@ export default function AdminLayout({
             })}
           </div>
 
-          {/* Quick System Telemetry Card & Sidebar Logout */}
-          <div className="hidden md:block pt-3 border-t border-slate-100 space-y-2">
-            <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-slate-500 font-medium">Database Node</span>
-                <span className="text-emerald-700 font-bold">PostgreSQL v16</span>
-              </div>
-              <div className="flex items-center justify-between text-xs font-mono">
-                <span className="text-slate-500 font-medium">Active Cache</span>
-                <span className="text-sky-700 font-bold">Redis Cluster</span>
-              </div>
-              <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
-                <div className="bg-emerald-500 h-full w-[94%]"></div>
-              </div>
-              <div className="text-[10px] text-slate-400 font-mono flex justify-between">
-                <span>Memory Pool: 94% Free</span>
-                <span>Tier 1 Secure</span>
-              </div>
-            </div>
-
-            {/* Sidebar Logout Button */}
+          {/* Sidebar Logout Action */}
+          <div className="hidden md:block pt-3 border-t border-slate-100">
             <button
               onClick={handleAdminLogout}
               className="w-full py-2.5 px-3.5 rounded-2xl bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold font-mono flex items-center justify-center gap-2 border border-red-200 transition cursor-pointer"
