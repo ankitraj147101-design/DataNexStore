@@ -47,12 +47,12 @@ const ADMIN_NAV = [
 ];
 
 // Clean Luxurious Light Theme Admin Login Gate Component
-function AdminLoginGate() {
+function AdminLoginGate({ onLoginSuccess }: { onLoginSuccess: () => void }) {
   const loginAs = useStore((state) => state.loginAs);
   const updateUserProfile = useStore((state) => state.updateUserProfile);
 
-  const [adminEmail, setAdminEmail] = useState('admin@datanexstore.in');
-  const [adminPassword, setAdminPassword] = useState('DataNex@2026');
+  const [adminEmail, setAdminEmail] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -69,17 +69,24 @@ function AdminLoginGate() {
       const emailInput = adminEmail.trim().toLowerCase();
       const passInput = adminPassword.trim();
 
-      const isValidEmail = validEmails.some((e) => e.toLowerCase() === emailInput) || emailInput.includes('admin');
-      const isValidPassword = validPasswords.includes(passInput) || passInput.length >= 6;
+      const isValidEmail =
+        validEmails.some((e) => e.toLowerCase() === emailInput) ||
+        emailInput.includes('admin');
+      const isValidPassword =
+        validPasswords.includes(passInput) || passInput.length >= 6;
 
       if (isValidEmail && isValidPassword) {
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('datanex_admin_session', 'true');
+        }
         loginAs('admin');
         updateUserProfile({
           firstName: 'Administrator',
           lastName: '',
-          email: adminEmail
+          email: adminEmail || 'admin@datanexstore.in'
         });
         setIsLoading(false);
+        onLoginSuccess();
       } else {
         setErrorMessage('Authentication Failed: Incorrect Admin Email or Password.');
         setIsLoading(false);
@@ -119,7 +126,7 @@ function AdminLoginGate() {
                 DATANEX<span className="text-sky-600">ADMIN</span>
               </h1>
               <p className="text-xs text-slate-500 font-mono">
-                Storefront Management Portal
+                Storefront Management Portal Login
               </p>
             </div>
           </div>
@@ -184,11 +191,11 @@ function AdminLoginGate() {
               className="w-full mt-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 font-mono shadow-md shadow-slate-900/10 cursor-pointer"
             >
               {isLoading ? (
-                <span>Logging In...</span>
+                <span>Verifying Credentials...</span>
               ) : (
                 <>
                   <LogIn className="w-4 h-4 text-sky-400" />
-                  <span>Sign In</span>
+                  <span>Sign In to Admin Portal</span>
                 </>
               )}
             </button>
@@ -211,6 +218,7 @@ export default function AdminLayout({
 }) {
   const pathname = usePathname();
   const [isClient, setIsClient] = useState(false);
+  const [sessionAuthed, setSessionAuthed] = useState(false);
 
   const currentUser = useStore((state) => state.currentUser);
   const logout = useStore((state) => state.logout);
@@ -222,7 +230,19 @@ export default function AdminLayout({
 
   useEffect(() => {
     setIsClient(true);
+    if (typeof window !== 'undefined') {
+      const isAuthed = sessionStorage.getItem('datanex_admin_session') === 'true';
+      setSessionAuthed(isAuthed);
+    }
   }, []);
+
+  const handleAdminLogout = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('datanex_admin_session');
+    }
+    setSessionAuthed(false);
+    logout();
+  };
 
   const lowStockCount = products.filter((p) => p.stock <= 5).length;
   const pendingOrders = orders.filter((o) => o.status === 'PENDING' || o.status === 'CONFIRMED').length;
@@ -239,14 +259,17 @@ export default function AdminLayout({
     return null;
   };
 
-  // If user is not an authenticated Admin, render the Admin Login Gate
-  const isAdminAuthenticated =
-    isClient &&
-    currentUser &&
-    (currentUser.role === 'ROLE_ADMIN' || currentUser.role === 'ROLE_SUPER_ADMIN');
+  // Strictly require active session or admin authentication
+  if (!isClient) {
+    return (
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center font-mono text-xs text-slate-500">
+        Loading Admin Gateway...
+      </div>
+    );
+  }
 
-  if (isClient && !isAdminAuthenticated) {
-    return <AdminLoginGate />;
+  if (!sessionAuthed) {
+    return <AdminLoginGate onLoginSuccess={() => setSessionAuthed(true)} />;
   }
 
   return (
@@ -337,7 +360,7 @@ export default function AdminLayout({
 
             {/* Interactive Admin Logout Button */}
             <button
-              onClick={() => logout()}
+              onClick={handleAdminLogout}
               title="Sign Out of Admin Portal"
               className="flex items-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold text-xs px-3.5 py-2 rounded-xl transition font-mono shadow-xs cursor-pointer"
             >
@@ -420,7 +443,7 @@ export default function AdminLayout({
 
             {/* Sidebar Logout Button */}
             <button
-              onClick={() => logout()}
+              onClick={handleAdminLogout}
               className="w-full py-2.5 px-3.5 rounded-2xl bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold font-mono flex items-center justify-center gap-2 border border-red-200 transition cursor-pointer"
             >
               <LogOut className="w-4 h-4" />
