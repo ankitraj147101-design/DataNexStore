@@ -1,0 +1,4 @@
+{
+  "buildCommand": "cd techvault-frontend && npm run build",
+  "outputDirectory": "techvault-frontend/.next"
+}
