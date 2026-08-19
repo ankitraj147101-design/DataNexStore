@@ -119,16 +119,6 @@ export default function AdminDashboardPage() {
             <PlusCircle className="w-4 h-4 text-sky-400" />
             <span>Add New Product</span>
           </Link>
-
-          <a
-            href="https://wa.me/919911371218"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-2xl transition flex items-center gap-2 font-mono shadow-xs"
-          >
-            <MessageSquare className="w-4 h-4" />
-            <span>Broadcast Promo</span>
-          </a>
         </div>
       </div>
 
