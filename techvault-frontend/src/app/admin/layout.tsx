@@ -31,7 +31,8 @@ import {
   AlertCircle,
   Eye,
   EyeOff,
-  Mail
+  Mail,
+  Command
 } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 
@@ -274,97 +275,94 @@ export default function AdminLayout({
 
   return (
     <div className="min-h-screen w-full bg-slate-50/60 text-slate-900 flex flex-col font-sans">
-      {/* 100% Full-Width Top Enterprise Command Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-40 px-4 sm:px-8 py-3 shadow-xs backdrop-blur-md w-full">
+      {/* Sleek Professional Executive Top Header (Vercel / Stripe Style) */}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-40 px-4 sm:px-8 py-2.5 shadow-xs backdrop-blur-md w-full">
         <div className="w-full flex items-center justify-between gap-4">
           
-          {/* Brand & Subsystem Indicator */}
-          <div className="flex items-center gap-3 sm:gap-6">
+          {/* Left: Storefront Return + Brand Logo */}
+          <div className="flex items-center gap-3 sm:gap-5 shrink-0">
             <Link
               href="/"
-              className="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-2 text-xs font-bold font-mono"
+              className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition flex items-center gap-1.5 text-xs font-bold font-mono border border-slate-200"
               title="Return to Customer Storefront"
             >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="hidden sm:inline">Storefront</span>
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Storefront</span>
             </Link>
 
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-slate-900 to-slate-800 flex items-center justify-center text-sky-400 shadow-md shadow-slate-900/10">
-                <Zap className="w-5 h-5 fill-sky-400" />
+            <div className="h-5 w-px bg-slate-200 hidden sm:block"></div>
+
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center text-sky-400 shadow-xs">
+                <Zap className="w-4 h-4 fill-sky-400" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-base sm:text-xl font-black tracking-tight text-slate-950 font-mono">
-                    DATANEX<span className="text-sky-600">COMMAND</span>
-                  </span>
-                  <span className="hidden sm:inline-flex items-center gap-1 bg-sky-50 text-sky-800 border border-sky-200 font-mono text-[10px] font-extrabold px-2.5 py-0.5 rounded-md uppercase tracking-wider">
-                    <ShieldCheck className="w-3 h-3 text-sky-600" />
-                    <span>Enterprise Tier</span>
-                  </span>
-                </div>
-                <div className="text-[11px] text-slate-500 font-mono hidden sm:block">
-                  Mission Control • Cloud Cluster: AWS ap-south-1 (Mumbai)
-                </div>
+              <div className="flex items-center gap-2">
+                <span className="text-base font-black tracking-tight text-slate-900 font-mono">
+                  DATANEX<span className="text-sky-600">STORE</span>
+                </span>
+                <span className="bg-slate-900 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
+                  Admin
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Center Real-Time Telemetry Pills */}
-          <div className="hidden xl:flex items-center gap-4 bg-slate-50 border border-slate-200/80 px-4 py-1.5 rounded-2xl text-xs font-mono">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-              <span className="text-slate-600 font-medium">PostgreSQL Engine:</span>
-              <span className="text-emerald-700 font-bold">100% Healthy (14ms)</span>
-            </div>
-            <span className="text-slate-300">|</span>
-            <div className="flex items-center gap-1.5">
-              <Activity className="w-3.5 h-3.5 text-sky-600" />
-              <span className="text-slate-600 font-medium">Fulfillment SLA:</span>
-              <span className="text-slate-900 font-bold">99.4% On-Time</span>
-            </div>
-            <span className="text-slate-300">|</span>
-            <div className="flex items-center gap-1.5">
-              <Database className="w-3.5 h-3.5 text-indigo-600" />
-              <span className="text-slate-600 font-medium">Cache Rate:</span>
-              <span className="text-indigo-700 font-bold">98.2% Hit</span>
+          {/* Center: Global Search & Command Bar */}
+          <div className="hidden md:flex flex-1 max-w-md mx-4">
+            <div className="w-full relative flex items-center">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Search orders, customers, SKUs, inventory..."
+                className="w-full bg-slate-50 hover:bg-slate-100 text-xs text-slate-900 pl-9 pr-14 py-2 rounded-xl border border-slate-200 focus:bg-white focus:border-sky-600 focus:outline-none transition font-medium"
+              />
+              <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-0.5 bg-slate-200/80 text-slate-500 text-[10px] font-mono font-bold px-1.5 py-0.5 rounded">
+                <span>⌘K</span>
+              </div>
             </div>
           </div>
 
-          {/* Right Header Admin Identity & Sign Out Action */}
-          <div className="flex items-center gap-2.5 sm:gap-4">
+          {/* Right: Live Status, WhatsApp Desk, Admin Profile & Clean Sign Out */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Live System Status Pill */}
+            <div className="hidden lg:flex items-center gap-1.5 bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1.5 rounded-xl text-xs font-mono font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Live Store Active</span>
+            </div>
+
+            {/* WhatsApp Desk Action */}
             <a
               href="https://wa.me/919911371218"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 text-xs font-bold px-3.5 py-2 rounded-xl transition font-mono"
+              className="p-2 rounded-xl text-emerald-600 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-200 transition"
+              title="WhatsApp Store Desk (+91 9911371218)"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <span>WhatsApp Desk Online</span>
+              <MessageSquare className="w-4 h-4" />
             </a>
 
             {/* Admin Profile Details */}
-            <div className="flex items-center gap-2.5 p-1.5 sm:px-3 sm:py-1.5 rounded-2xl bg-slate-100 border border-slate-200">
-              <div className="w-8 h-8 rounded-xl bg-slate-900 text-sky-400 font-black text-xs flex items-center justify-center font-mono shadow-xs">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200">
+              <div className="w-7 h-7 rounded-lg bg-slate-900 text-sky-400 font-bold text-xs flex items-center justify-center font-mono">
                 {currentUser?.firstName?.charAt(0) || 'A'}
               </div>
               <div className="text-left hidden sm:block">
-                <div className="text-xs font-black text-slate-900 leading-tight">
-                  {currentUser?.firstName ? `${currentUser.firstName} (Admin)` : 'Super Administrator'}
+                <div className="text-xs font-bold text-slate-900 leading-tight">
+                  Store Admin
                 </div>
-                <div className="text-[10px] text-slate-500 font-mono leading-tight">
-                  {currentUser?.email || 'admin@datanexstore.in'}
+                <div className="text-[10px] text-slate-400 font-mono leading-tight">
+                  Super Administrator
                 </div>
               </div>
             </div>
 
-            {/* Interactive Admin Logout Button */}
+            {/* Clean Professional Sign Out Button */}
             <button
               onClick={handleAdminLogout}
               title="Sign Out of Admin Portal"
-              className="flex items-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold text-xs px-3.5 py-2 rounded-xl transition font-mono shadow-xs cursor-pointer"
+              className="flex items-center gap-1.5 bg-slate-100 hover:bg-red-50 text-slate-700 hover:text-red-600 border border-slate-200 hover:border-red-200 font-bold text-xs px-3 py-1.5 rounded-xl transition font-mono cursor-pointer"
             >
-              <LogOut className="w-4 h-4" />
+              <LogOut className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Sign Out</span>
             </button>
           </div>
