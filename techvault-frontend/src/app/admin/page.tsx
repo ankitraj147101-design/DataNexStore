@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
   DollarSign,
   ShoppingBag,
@@ -12,7 +13,18 @@ import {
   ArrowDownRight,
   Clock,
   CheckCircle2,
-  Truck
+  Truck,
+  Sparkles,
+  Zap,
+  Layers,
+  ArrowRight,
+  FileSpreadsheet,
+  Download,
+  PlusCircle,
+  MessageSquare,
+  ShieldCheck,
+  RefreshCw,
+  ExternalLink
 } from 'lucide-react';
 import {
   AreaChart,
@@ -27,266 +39,387 @@ import {
 } from 'recharts';
 import { useStore } from '@/store/useStore';
 
-const CATEGORY_COLORS = ['#0284c7', '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b'];
+const CATEGORY_COLORS = ['#0284c7', '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ec4899'];
 
 export default function AdminDashboardPage() {
+  const [isClient, setIsClient] = useState(false);
+  const [timeframe, setTimeframe] = useState<'7d' | '30d' | '90d'>('7d');
+
   const adminStats = useStore((state) => state.adminStats);
   const products = useStore((state) => state.products);
   const orders = useStore((state) => state.orders);
+  const categories = useStore((state) => state.categories);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const lowStockCount = products.filter((p) => p.stock <= 5).length;
   const pendingOrders = orders.filter((o) => o.status === 'PENDING' || o.status === 'CONFIRMED').length;
+  const inTransitOrders = orders.filter((o) => o.status === 'SHIPPED' || o.status === 'OUT_FOR_DELIVERY').length;
+  const deliveredOrders = orders.filter((o) => o.status === 'DELIVERED').length;
 
+  const totalUnitsInStock = products.reduce((acc, p) => acc + p.stock, 0);
+
+  // Executive Top Stat Cards
   const statCards = [
     {
-      title: 'Total Gross Revenue',
+      title: 'Gross Merchandise Value (GMV)',
       value: `₹${adminStats.totalRevenue.toLocaleString()}`,
-      change: '+18.4% vs last week',
+      subtitle: '+24.6% vs previous month',
       isPositive: true,
       icon: DollarSign,
-      color: 'text-sky-700 bg-sky-50 border-sky-200'
+      color: 'from-sky-500/10 to-blue-500/5 text-sky-700 border-sky-200'
     },
     {
-      title: 'Today Revenue',
+      title: "Today's Verified Inflow",
       value: `₹${adminStats.todayRevenue.toLocaleString()}`,
-      change: '34 Orders Today',
+      subtitle: '34 Orders Processed Today',
       isPositive: true,
       icon: TrendingUp,
-      color: 'text-emerald-700 bg-emerald-50 border-emerald-200'
+      color: 'from-emerald-500/10 to-teal-500/5 text-emerald-700 border-emerald-200'
     },
     {
-      title: 'Active Orders',
-      value: `${orders.length} Total`,
-      change: `${pendingOrders} Pending Fulfillment`,
-      isPositive: false,
+      title: 'Pending Fulfillment',
+      value: `${pendingOrders} Orders`,
+      subtitle: `${inTransitOrders} Currently in Air Transit`,
+      isPositive: pendingOrders === 0,
       icon: ShoppingBag,
-      color: 'text-blue-700 bg-blue-50 border-blue-200'
+      color: 'from-blue-500/10 to-indigo-500/5 text-blue-700 border-blue-200'
     },
     {
-      title: 'Low Stock SKU Alerts',
-      value: `${lowStockCount} SKUs`,
-      change: 'Requires reorder',
-      isPositive: false,
+      title: 'Warehouse Stock Health',
+      value: `${totalUnitsInStock} Units`,
+      subtitle: `${lowStockCount} SKUs below minimum buffer`,
+      isPositive: lowStockCount === 0,
       icon: AlertTriangle,
-      color: 'text-amber-700 bg-amber-50 border-amber-200'
+      color: 'from-amber-500/10 to-orange-500/5 text-amber-700 border-amber-200'
     }
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Top Welcome Title */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="space-y-6 sm:space-y-8">
+      {/* Top Welcome Title & Executive Action Bar */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs">
         <div>
-          <div className="text-xs font-mono uppercase tracking-widest text-sky-700 font-bold mb-1">
-            Store Performance Insights
+          <div className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-sky-700 font-bold mb-1 flex items-center gap-1.5">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Storefront Telemetry & Sales Operations</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-            Analytics Overview
+          <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight font-mono">
+            Executive Command Center
           </h1>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2.5">
+          <Link
+            href="/admin/products"
+            className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-4 py-2.5 rounded-2xl transition flex items-center gap-2 font-mono shadow-xs"
+          >
+            <PlusCircle className="w-4 h-4 text-sky-400" />
+            <span>Add New Product</span>
+          </Link>
+
+          <a
+            href="https://wa.me/919911371218"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-2xl transition flex items-center gap-2 font-mono shadow-xs"
+          >
+            <MessageSquare className="w-4 h-4" />
+            <span>Broadcast Promo</span>
+          </a>
         </div>
       </div>
 
-      {/* 4 Metric Top Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* 4 Executive Metric Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {statCards.map((stat, idx) => {
           const Icon = stat.icon;
           return (
             <div
               key={idx}
-              className="bg-white border border-slate-200 rounded-3xl p-5 space-y-3 transition-all hover:shadow-md shadow-xs"
+              className={`bg-gradient-to-br ${stat.color} bg-white border rounded-3xl p-5 space-y-3 transition-all hover:shadow-md shadow-xs`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 font-mono uppercase">
+                <span className="text-[11px] font-bold text-slate-600 font-mono uppercase tracking-wider">
                   {stat.title}
                 </span>
-                <div className={`p-2 rounded-xl border ${stat.color}`}>
+                <div className="p-2 rounded-xl bg-white/90 border border-slate-200/80 shadow-2xs">
                   <Icon className="w-4 h-4" />
                 </div>
               </div>
 
-              <div className="text-2xl font-black text-slate-950 font-mono tracking-tight">
-                {stat.value}
-              </div>
-
-              <div className="text-[11px] font-mono text-slate-500 flex items-center gap-1 font-semibold">
-                {stat.isPositive ? (
-                  <ArrowUpRight className="w-3 h-3 text-emerald-600" />
-                ) : (
-                  <Clock className="w-3 h-3 text-amber-600" />
-                )}
-                <span>{stat.change}</span>
+              <div>
+                <div className="text-2xl sm:text-3xl font-black text-slate-950 font-mono tracking-tight">
+                  {stat.value}
+                </div>
+                <div className="text-xs text-slate-500 font-mono font-medium mt-1 flex items-center gap-1">
+                  {stat.isPositive ? (
+                    <ArrowUpRight className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  ) : (
+                    <AlertTriangle className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                  )}
+                  <span>{stat.subtitle}</span>
+                </div>
               </div>
             </div>
           );
         })}
       </div>
 
-      {/* Charts 2-Column Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        {/* Revenue Area Chart (8 Cols) */}
-        <div className="lg:col-span-8 bg-white border border-slate-200 rounded-3xl p-6 space-y-6 shadow-xs">
-          <div className="flex items-center justify-between">
+      {/* Visual Analytics Grid: Revenue Area Chart + Category Breakdown */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* Revenue Velocity Chart */}
+        <div className="lg:col-span-8 bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 space-y-5 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
-              <h3 className="text-base font-bold text-slate-900">Revenue Trajectory (Past 7 Days)</h3>
-              <p className="text-xs text-slate-500 font-mono">Real-time daily GMV in INR</p>
+              <h2 className="text-base sm:text-lg font-black text-slate-900 tracking-tight font-mono">
+                Sales Trajectory & Revenue Inflow (INR)
+              </h2>
+              <p className="text-xs text-slate-500 font-mono">
+                Daily settled transaction volume from online gateway & WhatsApp orders
+              </p>
             </div>
-            <span className="text-xs bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono px-2.5 py-1 rounded-full font-bold">
-              +24% Growth
-            </span>
+
+            <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl font-mono text-xs">
+              {(['7d', '30d', '90d'] as const).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => setTimeframe(t)}
+                  className={`px-3 py-1 rounded-lg font-bold uppercase transition ${
+                    timeframe === t
+                      ? 'bg-white text-slate-900 shadow-2xs'
+                      : 'text-slate-500 hover:text-slate-900'
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="h-64 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={adminStats.revenueHistory}>
-                <defs>
-                  <linearGradient id="revenueGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#0284c7" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#0284c7" stopOpacity={0.0} />
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="date" stroke="#94a3b8" fontSize={11} />
-                <YAxis
-                  stroke="#94a3b8"
-                  fontSize={11}
-                  tickFormatter={(val) => `₹${val / 1000}k`}
-                />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: '#ffffff',
-                    borderColor: '#e2e8f0',
-                    borderRadius: '16px',
-                    color: '#0f172a',
-                    boxShadow: '0 4px 20px -2px rgba(0,0,0,0.1)'
-                  }}
-                  formatter={(val: any) => [`₹${Number(val).toLocaleString()}`, 'Revenue']}
-                />
-                <Area
-                  type="monotone"
-                  dataKey="revenue"
-                  stroke="#0284c7"
-                  strokeWidth={3}
-                  fillOpacity={1}
-                  fill="url(#revenueGrad)"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
+          <div className="h-72 w-full">
+            {isClient && (
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={adminStats.salesChartData}>
+                  <defs>
+                    <linearGradient id="revenueGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#0284c7" stopOpacity={0.25} />
+                      <stop offset="95%" stopColor="#0284c7" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <XAxis
+                    dataKey="date"
+                    stroke="#94a3b8"
+                    fontSize={11}
+                    tickLine={false}
+                    fontFamily="monospace"
+                  />
+                  <YAxis
+                    stroke="#94a3b8"
+                    fontSize={11}
+                    tickLine={false}
+                    fontFamily="monospace"
+                    tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}k`}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#0f172a',
+                      borderRadius: '16px',
+                      border: '1px solid #1e293b',
+                      color: '#fff',
+                      fontSize: '12px',
+                      fontFamily: 'monospace',
+                      boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
+                    }}
+                    formatter={(value: any) => [`₹${Number(value).toLocaleString()}`, 'Settled Revenue']}
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="revenue"
+                    stroke="#0284c7"
+                    strokeWidth={2.5}
+                    fillOpacity={1}
+                    fill="url(#revenueGrad)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
           </div>
         </div>
 
-        {/* Category Share Donut Chart (4 Cols) */}
-        <div className="lg:col-span-4 bg-white border border-slate-200 rounded-3xl p-6 space-y-6 shadow-xs flex flex-col justify-between">
-          <div>
-            <h3 className="text-base font-bold text-slate-900">Category Share</h3>
-            <p className="text-xs text-slate-500 font-mono">By sales volume</p>
+        {/* Category Market Share */}
+        <div className="lg:col-span-4 bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 space-y-4 shadow-xs">
+          <div className="border-b border-slate-100 pb-3">
+            <h2 className="text-base sm:text-lg font-black text-slate-900 tracking-tight font-mono">
+              Hardware Category Share
+            </h2>
+            <p className="text-xs text-slate-500 font-mono">
+              Volume split across top product tiers
+            </p>
           </div>
 
-          <div className="h-52 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <PieChart>
-                <Pie
-                  data={adminStats.categorySales}
-                  dataKey="value"
-                  nameKey="category"
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={50}
-                  outerRadius={75}
-                  paddingAngle={4}
-                >
-                  {adminStats.categorySales.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={CATEGORY_COLORS[index % CATEGORY_COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: '#ffffff',
-                    borderColor: '#e2e8f0',
-                    borderRadius: '12px',
-                    color: '#0f172a'
-                  }}
-                  formatter={(val: any) => [`₹${Number(val).toLocaleString()}`, 'Sales']}
-                />
-              </PieChart>
-            </ResponsiveContainer>
+          <div className="h-52 w-full flex items-center justify-center">
+            {isClient && (
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={adminStats.categorySalesData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={50}
+                    outerRadius={80}
+                    paddingAngle={4}
+                    dataKey="value"
+                  >
+                    {adminStats.categorySalesData.map((_, index) => (
+                      <Cell
+                        key={`cell-${index}`}
+                        fill={CATEGORY_COLORS[index % CATEGORY_COLORS.length]}
+                      />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#0f172a',
+                      borderRadius: '12px',
+                      color: '#fff',
+                      fontSize: '11px',
+                      fontFamily: 'monospace'
+                    }}
+                    formatter={(val: any) => [`₹${Number(val).toLocaleString()}`, 'Gross Volume']}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            )}
           </div>
 
-          {/* Legend */}
-          <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-            {adminStats.categorySales.map((c, i) => (
-              <div key={c.category} className="flex items-center gap-2">
-                <span
-                  className="w-2.5 h-2.5 rounded-full shrink-0"
-                  style={{ backgroundColor: CATEGORY_COLORS[i % CATEGORY_COLORS.length] }}
-                />
-                <span className="text-slate-600 truncate">{c.category}</span>
+          <div className="space-y-2 pt-2 border-t border-slate-100 text-xs font-mono">
+            {adminStats.categorySalesData.map((item, idx) => (
+              <div key={idx} className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full"
+                    style={{ backgroundColor: CATEGORY_COLORS[idx % CATEGORY_COLORS.length] }}
+                  ></span>
+                  <span className="text-slate-700 font-medium">{item.name}</span>
+                </div>
+                <span className="font-bold text-slate-950">₹{item.value.toLocaleString()}</span>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Recent Orders Stream Table */}
-      <div className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xs">
-        <div className="p-6 border-b border-slate-100 flex items-center justify-between">
-          <div>
-            <h3 className="text-base font-bold text-slate-900">Recent Customer Orders</h3>
-            <p className="text-xs text-slate-500 font-mono">Live fulfillment queue</p>
+      {/* Operational Bottom Grid: Live Orders Feed + Low Stock Alerts */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        {/* Recent Orders Processing Feed */}
+        <div className="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 space-y-4 shadow-xs">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div>
+              <h2 className="text-base sm:text-lg font-black text-slate-900 tracking-tight font-mono">
+                Recent Order Stream
+              </h2>
+              <p className="text-xs text-slate-500 font-mono">
+                Real-time carrier statuses & payment confirmations
+              </p>
+            </div>
+            <Link
+              href="/admin/orders"
+              className="text-xs font-bold text-sky-600 hover:text-sky-700 font-mono flex items-center gap-1"
+            >
+              <span>Manage All ({orders.length})</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
-          <span className="text-xs text-slate-500 font-mono font-bold">
-            {orders.length} Total Orders
-          </span>
-        </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 text-slate-500 uppercase font-mono text-[10px] border-b border-slate-100">
-              <tr>
-                <th className="p-4">Order ID</th>
-                <th className="p-4">Customer</th>
-                <th className="p-4">Items</th>
-                <th className="p-4">Total Amount</th>
-                <th className="p-4">Status</th>
-                <th className="p-4">Carrier & Tracking</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100">
-              {orders.slice(0, 5).map((order) => (
-                <tr key={order.id} className="hover:bg-slate-50 transition">
-                  <td className="p-4 font-mono font-bold text-sky-700">
-                    {order.orderNumber}
-                  </td>
-                  <td className="p-4">
-                    <div className="font-bold text-slate-900">{order.customerName}</div>
-                    <div className="text-[10px] text-slate-400 font-mono">{order.customerEmail}</div>
-                  </td>
-                  <td className="p-4 text-slate-700">
-                    {order.items.length} Item(s)
-                  </td>
-                  <td className="p-4 font-mono font-bold text-slate-950">
-                    ₹{order.totalAmount.toLocaleString()}
-                  </td>
-                  <td className="p-4">
+          <div className="divide-y divide-slate-100">
+            {orders.slice(0, 5).map((order) => (
+              <div key={order.id} className="py-3.5 flex items-center justify-between gap-3 text-xs">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className="font-black text-slate-900 font-mono">{order.id}</span>
                     <span
-                      className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase font-mono ${
+                      className={`text-[9px] font-black px-2 py-0.5 rounded-full font-mono uppercase ${
                         order.status === 'DELIVERED'
-                          ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                          : 'bg-sky-50 text-sky-800 border border-sky-200'
+                          ? 'bg-emerald-100 text-emerald-800'
+                          : order.status === 'SHIPPED' || order.status === 'OUT_FOR_DELIVERY'
+                          ? 'bg-blue-100 text-blue-800'
+                          : 'bg-amber-100 text-amber-800'
                       }`}
                     >
                       {order.status}
                     </span>
-                  </td>
-                  <td className="p-4 font-mono text-[11px] text-slate-600">
-                    {order.trackingNumber || 'Pending Dispatch'}
-                  </td>
-                </tr>
+                  </div>
+                  <div className="text-slate-500 font-mono text-[11px]">
+                    {order.customerName} • {order.items.length} Item(s) • Blue Dart #{order.trackingNumber || 'AWB-PENDING'}
+                  </div>
+                </div>
+
+                <div className="text-right font-mono">
+                  <div className="font-black text-slate-950 text-sm">
+                    ₹{order.totalAmount.toLocaleString()}
+                  </div>
+                  <div className="text-[10px] text-slate-400">
+                    {order.paymentMethod}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Inventory Buffer Warnings */}
+        <div className="lg:col-span-5 bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 space-y-4 shadow-xs">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div>
+              <h2 className="text-base sm:text-lg font-black text-slate-900 tracking-tight font-mono flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-500" />
+                <span>Critical Stock Alerts</span>
+              </h2>
+              <p className="text-xs text-slate-500 font-mono">
+                SKUs requiring immediate distributor replenishment
+              </p>
+            </div>
+            <Link
+              href="/admin/inventory"
+              className="text-xs font-bold text-sky-600 hover:text-sky-700 font-mono"
+            >
+              Inventory Center
+            </Link>
+          </div>
+
+          <div className="space-y-3">
+            {products
+              .filter((p) => p.stock <= 5)
+              .slice(0, 4)
+              .map((prod) => (
+                <div
+                  key={prod.id}
+                  className="p-3 rounded-2xl bg-amber-50/50 border border-amber-200/80 flex items-center justify-between text-xs font-mono"
+                >
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={prod.images[0]?.imageUrl}
+                      alt={prod.name}
+                      className="w-10 h-10 rounded-xl object-contain bg-white p-1 border border-slate-200"
+                    />
+                    <div>
+                      <div className="font-bold text-slate-900 line-clamp-1">{prod.name}</div>
+                      <div className="text-[10px] text-slate-500">SKU: {prod.sku}</div>
+                    </div>
+                  </div>
+
+                  <div className="text-right">
+                    <div className="text-xs font-black text-red-600">
+                      {prod.stock} Left in Hub
+                    </div>
+                    <div className="text-[10px] text-slate-400">Reorder Level: 10</div>
+                  </div>
+                </div>
               ))}
-            </tbody>
-          </table>
+          </div>
         </div>
       </div>
     </div>
