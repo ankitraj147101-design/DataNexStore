@@ -31,9 +31,7 @@ import {
   AlertCircle,
   Eye,
   EyeOff,
-  Fingerprint,
-  Cpu,
-  ShieldAlert
+  Mail
 } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 
@@ -48,213 +46,150 @@ const ADMIN_NAV = [
   { name: 'Customer Database', href: '/admin/customers', icon: Users, badgeKey: 'customers' }
 ];
 
-// High-Security Executive Admin Login Gate Component
+// Clean Professional Admin Login Gate Component (Email & Password Only)
 function AdminLoginGate() {
   const loginAs = useStore((state) => state.loginAs);
   const updateUserProfile = useStore((state) => state.updateUserProfile);
 
   const [adminEmail, setAdminEmail] = useState('admin@datanexstore.in');
   const [adminPassword, setAdminPassword] = useState('Datanex@2026');
-  const [securityPin, setSecurityPin] = useState('991137');
-  const [adminName, setAdminName] = useState('Administrator');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [loadingStep, setLoadingStep] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     setErrorMessage('');
-    setLoadingStep('Verifying RSA Security Signature...');
-
-    setTimeout(() => {
-      setLoadingStep('Validating Multi-Factor Security Token...');
-    }, 400);
 
     setTimeout(() => {
       if (adminEmail.trim() && adminPassword.trim().length >= 4) {
         loginAs('admin');
         updateUserProfile({
-          firstName: adminName.trim() || 'Store Administrator',
+          firstName: 'Administrator',
           lastName: '',
           email: adminEmail
         });
         setIsLoading(false);
       } else {
-        setErrorMessage('Authentication Failed: Invalid Administrator Credentials or Security Passkey.');
+        setErrorMessage('Invalid credentials. Please enter a valid Email and Password.');
         setIsLoading(false);
       }
-    }, 900);
+    }, 400);
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#090d16] text-slate-100 flex flex-col justify-between selection:bg-sky-500 selection:text-white font-sans">
-      {/* Top Ambient Command Header */}
-      <header className="px-4 sm:px-8 py-3.5 flex items-center justify-between border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-md">
+    <div className="min-h-screen w-full bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-sky-500 selection:text-white font-sans">
+      {/* Top Bar */}
+      <header className="px-4 sm:px-8 py-3.5 flex items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md">
         <Link
           href="/"
           className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-white transition"
         >
           <ArrowLeft className="w-4 h-4" />
-          <span>Return to Storefront</span>
+          <span>Back to Storefront</span>
         </Link>
 
-        <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-slate-400">
-            <Cpu className="w-3.5 h-3.5 text-sky-400" />
-            <span>HSM Cluster: AP-SOUTH-1</span>
-          </div>
-          <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-800/60 px-3 py-1 rounded-full">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Security Gateway Online</span>
-          </div>
+        <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-800/60 px-3 py-1 rounded-full">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Secure Admin Gateway</span>
         </div>
       </header>
 
-      {/* Main Login Card Center */}
+      {/* Main Login Form Box */}
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 my-6">
-        <div className="w-full max-w-lg bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl shadow-black/80 space-y-6 backdrop-blur-2xl relative overflow-hidden">
+        <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
           
-          {/* Subtle Top Accent Glow */}
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500"></div>
-
-          {/* Brand Header */}
-          <div className="text-center space-y-3">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-slate-950 to-slate-800 border border-slate-700/80 flex items-center justify-center mx-auto shadow-xl shadow-sky-500/10">
-              <ShieldCheck className="w-8 h-8 text-sky-400" />
+          {/* Header */}
+          <div className="text-center space-y-2">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-600 to-blue-700 flex items-center justify-center mx-auto shadow-lg shadow-sky-500/20">
+              <Lock className="w-7 h-7 text-white" />
             </div>
-            <div className="space-y-1">
-              <div className="flex items-center justify-center gap-2">
-                <h1 className="text-2xl font-black text-white font-mono tracking-tight">
-                  DATANEX<span className="text-sky-400">COMMAND</span>
-                </h1>
-                <span className="text-[10px] font-mono font-bold bg-sky-950 text-sky-300 border border-sky-800 px-2 py-0.5 rounded uppercase">
-                  v2.8
-                </span>
-              </div>
+            <div className="space-y-0.5">
+              <h1 className="text-2xl font-black text-white font-mono tracking-tight">
+                DATANEX<span className="text-sky-400">ADMIN</span>
+              </h1>
               <p className="text-xs text-slate-400 font-mono">
-                Executive Storefront Administration & Control Gateway
+                Storefront Management Login
               </p>
             </div>
           </div>
 
-          {/* Security Alert / Error Box */}
+          {/* Error Notice */}
           {errorMessage && (
-            <div className="p-3.5 rounded-2xl bg-red-950/70 border border-red-800/80 text-xs text-red-200 flex items-center gap-2.5 font-mono">
+            <div className="p-3 rounded-xl bg-red-950/70 border border-red-800 text-xs text-red-200 flex items-center gap-2 font-mono">
               <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
               <span>{errorMessage}</span>
             </div>
           )}
 
-          {/* Login Form */}
+          {/* Clean Email & Password Form */}
           <form onSubmit={handleAdminLogin} className="space-y-4">
+            {/* Email Field */}
             <div className="space-y-1.5">
-              <label className="text-xs font-mono text-slate-300 font-bold flex items-center justify-between">
-                <span>Administrator Identity</span>
-                <span className="text-[10px] text-slate-500">Authorized Personnel</span>
+              <label className="text-xs font-mono text-slate-300 font-bold block">
+                Admin Email
               </label>
-              <input
-                type="text"
-                required
-                value={adminName}
-                onChange={(e) => setAdminName(e.target.value)}
-                placeholder="Store Administrator"
-                className="w-full bg-slate-950 border border-slate-800 text-xs text-white px-4 py-3 rounded-2xl focus:border-sky-500 focus:outline-none font-mono"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-xs font-mono text-slate-300 font-bold flex items-center justify-between">
-                <span>Corporate Admin Email</span>
-                <span className="text-[10px] text-slate-500">Encrypted Channel</span>
-              </label>
-              <input
-                type="email"
-                required
-                value={adminEmail}
-                onChange={(e) => setAdminEmail(e.target.value)}
-                placeholder="admin@datanexstore.in"
-                className="w-full bg-slate-950 border border-slate-800 text-xs text-white px-4 py-3 rounded-2xl focus:border-sky-500 focus:outline-none font-mono"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="space-y-1.5">
-                <label className="text-xs font-mono text-slate-300 font-bold block">
-                  Security Passkey
-                </label>
-                <div className="relative">
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    required
-                    value={adminPassword}
-                    onChange={(e) => setAdminPassword(e.target.value)}
-                    placeholder="••••••••••••"
-                    className="w-full bg-slate-950 border border-slate-800 text-xs text-white px-4 py-3 rounded-2xl focus:border-sky-500 focus:outline-none font-mono pr-10"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
-                  >
-                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                  </button>
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-mono text-slate-300 font-bold block">
-                  2FA Security PIN
-                </label>
+              <div className="relative">
                 <input
-                  type="text"
-                  maxLength={6}
+                  type="email"
                   required
-                  value={securityPin}
-                  onChange={(e) => setSecurityPin(e.target.value.replace(/[^0-9]/g, ''))}
-                  placeholder="991137"
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white px-4 py-3 rounded-2xl focus:border-sky-500 focus:outline-none font-mono tracking-widest text-center font-bold"
+                  value={adminEmail}
+                  onChange={(e) => setAdminEmail(e.target.value)}
+                  placeholder="admin@datanexstore.in"
+                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white pl-10 pr-4 py-3 rounded-2xl focus:border-sky-500 focus:outline-none font-mono"
                 />
+                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
               </div>
             </div>
 
+            {/* Password Field */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-mono text-slate-300 font-bold block">
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={adminPassword}
+                  onChange={(e) => setAdminPassword(e.target.value)}
+                  placeholder="Enter Password"
+                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white pl-10 pr-10 py-3 rounded-2xl focus:border-sky-500 focus:outline-none font-mono"
+                />
+                <KeyRound className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            {/* Sign In Button */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full mt-2 bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-bold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 font-mono shadow-lg shadow-sky-600/30"
+              className="w-full mt-2 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 font-mono shadow-md shadow-sky-600/30 cursor-pointer"
             >
               {isLoading ? (
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin"></div>
-                  <span>{loadingStep}</span>
-                </div>
+                <span>Logging In...</span>
               ) : (
                 <>
-                  <Lock className="w-4 h-4" />
-                  <span>Authenticate & Open Command Center</span>
+                  <LogIn className="w-4 h-4" />
+                  <span>Sign In</span>
                 </>
               )}
             </button>
           </form>
-
-          {/* Security Telemetry Footer inside card */}
-          <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
-            <div className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>TLS 1.3 / AES-256</span>
-            </div>
-            <div className="text-slate-500">
-              Session Node: #991137
-            </div>
-          </div>
         </div>
       </main>
 
-      {/* Corporate Footer */}
-      <footer className="px-4 sm:px-8 py-4 text-center text-xs font-mono text-slate-500 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <span>DatanexStore Enterprise Control Systems • All Rights Reserved © 2026</span>
-        <span>Authorized Internal Personnel Only</span>
+      {/* Footer */}
+      <footer className="px-4 sm:px-8 py-4 text-center text-xs font-mono text-slate-500 border-t border-slate-800">
+        Datanexstore Enterprise Admin Panel • All Rights Reserved © 2026
       </footer>
     </div>
   );
