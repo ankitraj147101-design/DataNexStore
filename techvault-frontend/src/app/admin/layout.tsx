@@ -46,7 +46,7 @@ const ADMIN_NAV = [
   { name: 'Customer Database', href: '/admin/customers', icon: Users, badgeKey: 'customers' }
 ];
 
-// Clean Professional Admin Login Gate Component (Email & Password Only)
+// Clean Luxurious Light Theme Admin Login Gate Component
 function AdminLoginGate() {
   const loginAs = useStore((state) => state.loginAs);
   const updateUserProfile = useStore((state) => state.updateUserProfile);
@@ -88,41 +88,46 @@ function AdminLoginGate() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-sky-500 selection:text-white font-sans">
-      {/* Top Bar */}
-      <header className="px-4 sm:px-8 py-3.5 flex items-center justify-between border-b border-slate-800 bg-slate-900/80 backdrop-blur-md">
+    <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 via-sky-50/40 to-white text-slate-900 flex flex-col justify-between selection:bg-sky-600 selection:text-white font-sans">
+      {/* Clean Light Top Header */}
+      <header className="px-4 sm:px-8 py-3.5 flex items-center justify-between border-b border-slate-200/80 bg-white/80 backdrop-blur-md">
         <Link
           href="/"
-          className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-white transition"
+          className="flex items-center gap-2 text-xs font-mono text-slate-600 hover:text-slate-900 transition font-bold"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Storefront</span>
         </Link>
+
+        <div className="flex items-center gap-1.5 text-xs font-mono text-slate-500 font-bold">
+          <ShieldCheck className="w-4 h-4 text-sky-600" />
+          <span>DatanexStore Control Center</span>
+        </div>
       </header>
 
-      {/* Main Login Form Box */}
+      {/* Main Login Form Card */}
       <main className="flex-1 flex items-center justify-center p-4 sm:p-6 my-6">
-        <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+        <div className="w-full max-w-md bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-900/5 space-y-6">
           
           {/* Header */}
-          <div className="text-center space-y-2">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-600 to-blue-700 flex items-center justify-center mx-auto shadow-lg shadow-sky-500/20">
-              <Lock className="w-7 h-7 text-white" />
+          <div className="text-center space-y-2.5">
+            <div className="w-14 h-14 rounded-2xl bg-slate-900 text-sky-400 flex items-center justify-center mx-auto shadow-md shadow-slate-900/10">
+              <Zap className="w-7 h-7 fill-sky-400" />
             </div>
             <div className="space-y-0.5">
-              <h1 className="text-2xl font-black text-white font-mono tracking-tight">
-                DATANEX<span className="text-sky-400">ADMIN</span>
+              <h1 className="text-2xl font-black text-slate-900 font-mono tracking-tight">
+                DATANEX<span className="text-sky-600">ADMIN</span>
               </h1>
-              <p className="text-xs text-slate-400 font-mono">
-                Storefront Management Login
+              <p className="text-xs text-slate-500 font-mono">
+                Storefront Management Portal
               </p>
             </div>
           </div>
 
           {/* Error Notice */}
           {errorMessage && (
-            <div className="p-3 rounded-xl bg-red-950/70 border border-red-800 text-xs text-red-200 flex items-center gap-2 font-mono">
-              <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+            <div className="p-3 rounded-2xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2 font-mono">
+              <AlertCircle className="w-4 h-4 text-red-500 shrink-0" />
               <span>{errorMessage}</span>
             </div>
           )}
@@ -131,7 +136,7 @@ function AdminLoginGate() {
           <form onSubmit={handleAdminLogin} className="space-y-4">
             {/* Email Field */}
             <div className="space-y-1.5">
-              <label className="text-xs font-mono text-slate-300 font-bold block">
+              <label className="text-xs font-mono text-slate-700 font-bold block">
                 Admin Email
               </label>
               <div className="relative">
@@ -141,15 +146,15 @@ function AdminLoginGate() {
                   value={adminEmail}
                   onChange={(e) => setAdminEmail(e.target.value)}
                   placeholder="admin@datanexstore.in"
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white pl-10 pr-4 py-3 rounded-2xl focus:border-sky-500 focus:outline-none font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 text-xs text-slate-900 pl-10 pr-4 py-3 rounded-2xl focus:bg-white focus:border-sky-600 focus:outline-none font-mono transition"
                 />
-                <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               </div>
             </div>
 
             {/* Password Field */}
             <div className="space-y-1.5">
-              <label className="text-xs font-mono text-slate-300 font-bold block">
+              <label className="text-xs font-mono text-slate-700 font-bold block">
                 Password
               </label>
               <div className="relative">
@@ -159,13 +164,13 @@ function AdminLoginGate() {
                   value={adminPassword}
                   onChange={(e) => setAdminPassword(e.target.value)}
                   placeholder="Enter Password"
-                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white pl-10 pr-10 py-3 rounded-2xl focus:border-sky-500 focus:outline-none font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 text-xs text-slate-900 pl-10 pr-10 py-3 rounded-2xl focus:bg-white focus:border-sky-600 focus:outline-none font-mono transition"
                 />
-                <KeyRound className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 cursor-pointer"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -176,13 +181,13 @@ function AdminLoginGate() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full mt-2 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 font-mono shadow-md shadow-sky-600/30 cursor-pointer"
+              className="w-full mt-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-3.5 rounded-2xl transition flex items-center justify-center gap-2 font-mono shadow-md shadow-slate-900/10 cursor-pointer"
             >
               {isLoading ? (
                 <span>Logging In...</span>
               ) : (
                 <>
-                  <LogIn className="w-4 h-4" />
+                  <LogIn className="w-4 h-4 text-sky-400" />
                   <span>Sign In</span>
                 </>
               )}
@@ -191,8 +196,8 @@ function AdminLoginGate() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="px-4 sm:px-8 py-4 text-center text-xs font-mono text-slate-500 border-t border-slate-800">
+      {/* Clean Light Footer */}
+      <footer className="px-4 sm:px-8 py-4 text-center text-xs font-mono text-slate-400 border-t border-slate-200/80 bg-white/60">
         Datanexstore Enterprise Admin Panel • All Rights Reserved © 2026
       </footer>
     </div>
