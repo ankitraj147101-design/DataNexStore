@@ -316,18 +316,6 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
                 </button>
               </form>
             )}
-
-            {/* 1-Click Quick Demo Switcher */}
-            <div className="pt-3 border-t border-slate-100">
-              <button
-                type="button"
-                onClick={handleDemoCustomer}
-                className="w-full py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold font-mono transition border border-slate-200 flex items-center justify-center gap-1.5"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-                <span>1-Click Instant Customer Login</span>
-              </button>
-            </div>
           </div>
         )}
 
