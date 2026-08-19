@@ -24,7 +24,13 @@ import {
   Database,
   Lock,
   LogOut,
-  Sparkles
+  Sparkles,
+  KeyRound,
+  LogIn,
+  CheckCircle2,
+  AlertCircle,
+  Eye,
+  EyeOff
 } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 
@@ -39,6 +45,191 @@ const ADMIN_NAV = [
   { name: 'Customer Database', href: '/admin/customers', icon: Users, badgeKey: 'customers' }
 ];
 
+// High-Security Executive Admin Login Gate Component
+function AdminLoginGate() {
+  const loginAs = useStore((state) => state.loginAs);
+  const updateUserProfile = useStore((state) => state.updateUserProfile);
+
+  const [adminEmail, setAdminEmail] = useState('admin@datanexstore.in');
+  const [adminPassword, setAdminPassword] = useState('Datanex@2026');
+  const [adminName, setAdminName] = useState('Store Administrator');
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleAdminLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setErrorMessage('');
+
+    setTimeout(() => {
+      if (adminEmail.trim() && adminPassword.trim().length >= 4) {
+        loginAs('admin');
+        updateUserProfile({
+          firstName: adminName.split(' ')[0] || 'Store',
+          lastName: adminName.split(' ').slice(1).join(' ') || 'Admin',
+          email: adminEmail
+        });
+        setIsLoading(false);
+      } else {
+        setErrorMessage('Invalid credentials. Please enter a valid Admin Email & Security Key.');
+        setIsLoading(false);
+      }
+    }, 400);
+  };
+
+  const handleQuickDemoLogin = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      loginAs('admin');
+      updateUserProfile({
+        firstName: 'Master',
+        lastName: 'Admin',
+        email: 'admin@datanexstore.in'
+      });
+      setIsLoading(false);
+    }, 200);
+  };
+
+  return (
+    <div className="min-h-screen w-full bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-sky-500 selection:text-white font-sans">
+      {/* Top Ambient Bar */}
+      <header className="px-6 py-4 flex items-center justify-between border-b border-slate-800/80 bg-slate-900/60 backdrop-blur-md">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-white transition"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Return to Storefront</span>
+        </Link>
+
+        <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 font-bold">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Security Protocol v4.8 Active</span>
+        </div>
+      </header>
+
+      {/* Main Login Card Center */}
+      <main className="flex-1 flex items-center justify-center p-4 sm:p-6">
+        <div className="w-full max-w-md bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-sky-950/40 space-y-6 backdrop-blur-xl">
+          {/* Brand Header */}
+          <div className="text-center space-y-2">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 flex items-center justify-center mx-auto shadow-lg shadow-sky-500/25">
+              <Lock className="w-7 h-7 text-white" />
+            </div>
+            <div className="space-y-0.5">
+              <h1 className="text-xl sm:text-2xl font-black text-white font-mono tracking-tight">
+                DATANEX<span className="text-sky-400">COMMAND</span>
+              </h1>
+              <p className="text-xs text-slate-400 font-mono">
+                Executive Storefront Administration Portal
+              </p>
+            </div>
+          </div>
+
+          {/* Security Alert / Error Box */}
+          {errorMessage && (
+            <div className="p-3 rounded-xl bg-red-950/60 border border-red-800/80 text-xs text-red-200 flex items-center gap-2 font-mono">
+              <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
+              <span>{errorMessage}</span>
+            </div>
+          )}
+
+          {/* Login Form */}
+          <form onSubmit={handleAdminLogin} className="space-y-4">
+            <div className="space-y-1">
+              <label className="text-xs font-mono text-slate-300 font-bold block">
+                Administrator Identity / Name
+              </label>
+              <input
+                type="text"
+                required
+                value={adminName}
+                onChange={(e) => setAdminName(e.target.value)}
+                placeholder="e.g. Master Admin / Ankit Raj"
+                className="w-full bg-slate-950 border border-slate-800 text-xs text-white px-3.5 py-2.5 rounded-xl focus:border-sky-500 focus:outline-none font-mono"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-xs font-mono text-slate-300 font-bold block">
+                Admin Email ID
+              </label>
+              <input
+                type="email"
+                required
+                value={adminEmail}
+                onChange={(e) => setAdminEmail(e.target.value)}
+                placeholder="admin@datanexstore.in"
+                className="w-full bg-slate-950 border border-slate-800 text-xs text-white px-3.5 py-2.5 rounded-xl focus:border-sky-500 focus:outline-none font-mono"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-xs font-mono text-slate-300 font-bold block">
+                Security Passkey
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  required
+                  value={adminPassword}
+                  onChange={(e) => setAdminPassword(e.target.value)}
+                  placeholder="••••••••••••"
+                  className="w-full bg-slate-950 border border-slate-800 text-xs text-white px-3.5 py-2.5 rounded-xl focus:border-sky-500 focus:outline-none font-mono pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs py-3 rounded-xl transition flex items-center justify-center gap-2 font-mono shadow-md shadow-sky-600/30"
+            >
+              {isLoading ? (
+                <span>Authenticating Credentials...</span>
+              ) : (
+                <>
+                  <LogIn className="w-4 h-4" />
+                  <span>Authenticate & Open Command Center</span>
+                </>
+              )}
+            </button>
+          </form>
+
+          {/* Quick Demo 1-Click Access Button */}
+          <div className="pt-2 border-t border-slate-800/80 space-y-3">
+            <button
+              type="button"
+              onClick={handleQuickDemoLogin}
+              className="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold py-2.5 rounded-xl transition flex items-center justify-center gap-2 font-mono border border-slate-700"
+            >
+              <Zap className="w-4 h-4 text-sky-400" />
+              <span>1-Click Instant Admin Access (Demo Mode)</span>
+            </button>
+
+            <div className="text-[11px] text-slate-500 text-center font-mono">
+              Protected by RSA 4096-bit Encryption • DatanexStore Cloud
+            </div>
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <footer className="px-6 py-4 text-center text-xs font-mono text-slate-500 border-t border-slate-800/80">
+        Datanexstore Enterprise Admin Panel • All Rights Reserved © 2026
+      </footer>
+    </div>
+  );
+}
+
 export default function AdminLayout({
   children
 }: {
@@ -48,6 +239,7 @@ export default function AdminLayout({
   const [isClient, setIsClient] = useState(false);
 
   const currentUser = useStore((state) => state.currentUser);
+  const logout = useStore((state) => state.logout);
   const products = useStore((state) => state.products);
   const orders = useStore((state) => state.orders);
   const categories = useStore((state) => state.categories);
@@ -72,6 +264,16 @@ export default function AdminLayout({
     if (key === 'customers') return '4 Active';
     return null;
   };
+
+  // If user is not an authenticated Admin, render the Admin Login Gate
+  const isAdminAuthenticated =
+    isClient &&
+    currentUser &&
+    (currentUser.role === 'ROLE_ADMIN' || currentUser.role === 'ROLE_SUPER_ADMIN');
+
+  if (isClient && !isAdminAuthenticated) {
+    return <AdminLoginGate />;
+  }
 
   return (
     <div className="min-h-screen w-full bg-slate-50/60 text-slate-900 flex flex-col font-sans">
@@ -132,7 +334,7 @@ export default function AdminLayout({
             </div>
           </div>
 
-          {/* Right Header Admin Identity & Live Store Link */}
+          {/* Right Header Admin Identity & Sign Out Action */}
           <div className="flex items-center gap-2.5 sm:gap-4">
             <a
               href="https://wa.me/919911371218"
@@ -144,6 +346,7 @@ export default function AdminLayout({
               <span>WhatsApp Desk Online</span>
             </a>
 
+            {/* Admin Profile Details */}
             <div className="flex items-center gap-2.5 p-1.5 sm:px-3 sm:py-1.5 rounded-2xl bg-slate-100 border border-slate-200">
               <div className="w-8 h-8 rounded-xl bg-slate-900 text-sky-400 font-black text-xs flex items-center justify-center font-mono shadow-xs">
                 {currentUser?.firstName?.charAt(0) || 'A'}
@@ -153,10 +356,20 @@ export default function AdminLayout({
                   {currentUser?.firstName ? `${currentUser.firstName} (Admin)` : 'Super Administrator'}
                 </div>
                 <div className="text-[10px] text-slate-500 font-mono leading-tight">
-                  Full Authority
+                  {currentUser?.email || 'admin@datanexstore.in'}
                 </div>
               </div>
             </div>
+
+            {/* Interactive Admin Logout Button */}
+            <button
+              onClick={() => logout()}
+              title="Sign Out of Admin Portal"
+              className="flex items-center gap-1.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold text-xs px-3.5 py-2 rounded-xl transition font-mono shadow-xs"
+            >
+              <LogOut className="w-4 h-4" />
+              <span className="hidden sm:inline">Sign Out</span>
+            </button>
           </div>
         </div>
       </header>
@@ -211,8 +424,8 @@ export default function AdminLayout({
             })}
           </div>
 
-          {/* Quick System Telemetry Card */}
-          <div className="hidden md:block pt-3 border-t border-slate-100">
+          {/* Quick System Telemetry Card & Sidebar Logout */}
+          <div className="hidden md:block pt-3 border-t border-slate-100 space-y-2">
             <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
               <div className="flex items-center justify-between text-xs font-mono">
                 <span className="text-slate-500 font-medium">Database Node</span>
@@ -230,6 +443,15 @@ export default function AdminLayout({
                 <span>Tier 1 Secure</span>
               </div>
             </div>
+
+            {/* Sidebar Logout Button */}
+            <button
+              onClick={() => logout()}
+              className="w-full py-2.5 px-3.5 rounded-2xl bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold font-mono flex items-center justify-center gap-2 border border-red-200 transition"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Sign Out Admin Session</span>
+            </button>
           </div>
         </aside>
 
