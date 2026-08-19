@@ -89,11 +89,6 @@ function AdminLoginGate() {
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Storefront</span>
         </Link>
-
-        <div className="flex items-center gap-2 text-xs font-mono text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-800/60 px-3 py-1 rounded-full">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Secure Admin Gateway</span>
-        </div>
       </header>
 
       {/* Main Login Form Box */}
