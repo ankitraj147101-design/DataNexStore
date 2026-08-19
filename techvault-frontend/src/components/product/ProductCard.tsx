@@ -102,12 +102,12 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Product Thumbnail */}
       <Link
         href={`/products/${product.slug}`}
-        className="block relative overflow-hidden rounded-xl sm:rounded-2xl bg-slate-50/70 p-2 sm:p-4 aspect-square mb-2 sm:mb-3 group/img border border-slate-100 flex items-center justify-center"
+        className="block relative overflow-hidden rounded-xl sm:rounded-2xl bg-slate-100 aspect-[4/3] mb-2 sm:mb-3 group/img"
       >
         <img
           src={primaryImage}
           alt={product.name}
-          className="w-full h-full object-contain group-hover/img:scale-106 transition-transform duration-500"
+          className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500"
         />
       </Link>
 
