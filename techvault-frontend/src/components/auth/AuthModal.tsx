@@ -36,6 +36,7 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
   const loginAs = useStore((state) => state.loginAs);
   const updateUserProfile = useStore((state) => state.updateUserProfile);
+  const registerCustomer = useStore((state) => state.registerCustomer);
 
   if (!isOpen) return null;
 
@@ -56,6 +57,11 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       setError('Please enter the 4-digit verification code');
       return;
     }
+    registerCustomer({
+      name: 'Store Customer',
+      email: `customer_${phone}@datanexstore.in`,
+      phone: phone
+    });
     loginAs('customer');
     if (phone) {
       updateUserProfile({ phone: `+91 ${phone}` });
@@ -74,6 +80,11 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       setError('Please enter your email and password');
       return;
     }
+    registerCustomer({
+      name: email.split('@')[0],
+      email: email,
+      phone: phone || '9911371218'
+    });
     loginAs('customer');
     updateUserProfile({ email });
     setSuccess('Signed in successfully! Welcome back.');
@@ -91,6 +102,11 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       return;
     }
     const [firstName, ...rest] = fullName.split(' ');
+    registerCustomer({
+      name: fullName,
+      email: email,
+      phone: phone
+    });
     loginAs('customer');
     updateUserProfile({
       firstName: firstName || 'Customer',
@@ -105,14 +121,6 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       setSuccess('');
     }, 800);
   };
-
-  const handleDemoCustomer = () => {
-    loginAs('customer');
-    setSuccess('Signed in as Verified Customer');
-    setTimeout(() => {
-      onClose();
-      setSuccess('');
-    }, 600);
   };
 
   return (

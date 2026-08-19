@@ -125,17 +125,32 @@ export default function AdminCustomersPage() {
   const [selectedCustomer, setSelectedCustomer] = useState<CustomerProfile | null>(null);
 
   const storeOrders = useStore((state) => state.orders);
+  const registeredCustomers = useStore((state) => state.registeredCustomers);
 
-  // Combine demo customers with live placed orders in the store
+  // Combine registered accounts with live placed orders in the store
   const allCustomers = useMemo(() => {
     const customerMap = new Map<string, CustomerProfile>();
 
-    // Seed with baseline demo profiles
-    DEFAULT_DEMO_CUSTOMERS.forEach((c) => {
-      customerMap.set(c.email.toLowerCase(), { ...c });
+    // 1. Seed with registered accounts from store
+    (registeredCustomers || []).forEach((c) => {
+      customerMap.set(c.email.toLowerCase(), {
+        id: c.id,
+        name: c.name,
+        email: c.email,
+        phone: c.phone,
+        city: c.city || 'New Delhi',
+        state: c.state || 'Delhi',
+        pincode: c.pincode || '110001',
+        addressLine: c.addressLine || 'Registered Account',
+        ordersCount: c.ordersCount || 0,
+        totalSpent: c.totalSpent || 0,
+        status: c.status || 'NEW',
+        joined: c.joined || new Date().toISOString().split('T')[0],
+        orders: []
+      });
     });
 
-    // Merge live order profiles
+    // 2. Merge live order profiles
     storeOrders.forEach((o) => {
       const email = o.customerEmail?.toLowerCase() || `guest_${o.orderNumber.toLowerCase()}@datanex.in`;
       const existing = customerMap.get(email);
@@ -149,13 +164,14 @@ export default function AdminCustomersPage() {
       };
 
       if (existing) {
-        // Add order if not already in list
         if (!existing.orders.some((eo) => eo.orderNumber === o.orderNumber)) {
           existing.orders.push(orderItem);
           existing.ordersCount = existing.orders.length;
           existing.totalSpent += o.totalAmount;
           if (existing.totalSpent >= 50000) {
             existing.status = 'VIP';
+          } else if (existing.ordersCount > 0) {
+            existing.status = 'ACTIVE';
           }
         }
       } else {
@@ -168,7 +184,7 @@ export default function AdminCustomersPage() {
           city: o.shippingAddress?.city || 'New Delhi',
           state: o.shippingAddress?.state || 'Delhi',
           pincode: o.shippingAddress?.pincode || '110001',
-          addressLine: o.shippingAddress?.addressLine1 || 'Store Address',
+          addressLine: o.shippingAddress?.addressLine1 || 'Store Delivery Address',
           ordersCount: 1,
           totalSpent: total,
           status: total >= 50000 ? 'VIP' : 'NEW',
@@ -179,7 +195,7 @@ export default function AdminCustomersPage() {
     });
 
     return Array.from(customerMap.values());
-  }, [storeOrders]);
+  }, [registeredCustomers, storeOrders]);
 
   // Filtered customer list
   const filteredCustomers = allCustomers.filter((c) => {

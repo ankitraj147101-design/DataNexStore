@@ -237,3 +237,20 @@ export interface AdminDashboardStats {
   categorySales: { category: string; value: number; count: number }[];
   topSellingProducts: { id: number; name: string; soldCount: number; revenue: number }[];
 }
+
+export interface CustomerRecord {
+  id: string | number;
+  name: string;
+  email: string;
+  phone: string;
+  city?: string;
+  state?: string;
+  pincode?: string;
+  addressLine?: string;
+  ordersCount: number;
+  totalSpent: number;
+  status: 'ACTIVE' | 'VIP' | 'NEW';
+  joined: string;
+}
+
+

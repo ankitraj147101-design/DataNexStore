@@ -12,7 +12,8 @@ import {
   Brand,
   Review,
   AdminDashboardStats,
-  OrderStatus
+  OrderStatus,
+  CustomerRecord
 } from '@/types';
 import {
   INITIAL_PRODUCTS,
@@ -92,6 +93,8 @@ interface StoreState {
   loginAs: (role: 'customer' | 'admin') => void;
   logout: () => void;
   updateUserProfile: (profile: Partial<User>) => void;
+  registeredCustomers: CustomerRecord[];
+  registerCustomer: (customerData: { name: string; email: string; phone: string; city?: string; state?: string }) => CustomerRecord;
 
   // Order Placement
   createOrder: (orderData: Omit<Order, 'id' | 'orderNumber' | 'createdAt' | 'updatedAt'>) => Order;
@@ -331,6 +334,97 @@ export const useStore = create<StoreState>()(
 
       // Auth
       currentUser: null,
+      registeredCustomers: [
+        {
+          id: 1,
+          name: 'Aakash Verma',
+          email: 'aakash.verma@datanexstore.in',
+          phone: '+91 9123456789',
+          city: 'Bengaluru',
+          state: 'Karnataka',
+          ordersCount: 2,
+          totalSpent: 44993,
+          status: 'ACTIVE',
+          joined: '2026-06-15'
+        },
+        {
+          id: 2,
+          name: 'Rohan Sharma',
+          email: 'rohan.sharma@gmail.com',
+          phone: '+91 9876543210',
+          city: 'Mumbai',
+          state: 'Maharashtra',
+          ordersCount: 4,
+          totalSpent: 89490,
+          status: 'VIP',
+          joined: '2026-05-20'
+        },
+        {
+          id: 3,
+          name: 'Vikramaditya Nair',
+          email: 'vikram.nair@outlook.com',
+          phone: '+91 9811223344',
+          city: 'Hyderabad',
+          state: 'Telangana',
+          ordersCount: 1,
+          totalSpent: 16999,
+          status: 'ACTIVE',
+          joined: '2026-07-02'
+        },
+        {
+          id: 4,
+          name: 'Pooja Iyer',
+          email: 'pooja.iyer@gmail.com',
+          phone: '+91 9900112233',
+          city: 'Chennai',
+          state: 'Tamil Nadu',
+          ordersCount: 3,
+          totalSpent: 54990,
+          status: 'VIP',
+          joined: '2026-06-28'
+        }
+      ],
+      registerCustomer: (customerData) => {
+        const id = Date.now();
+        const formattedPhone = customerData.phone.startsWith('+91')
+          ? customerData.phone
+          : `+91 ${customerData.phone}`;
+
+        const newCustomer: CustomerRecord = {
+          id,
+          name: customerData.name || 'Store Customer',
+          email: customerData.email,
+          phone: formattedPhone,
+          city: customerData.city || 'New Delhi',
+          state: customerData.state || 'Delhi',
+          ordersCount: 0,
+          totalSpent: 0,
+          status: 'NEW',
+          joined: new Date().toISOString().split('T')[0]
+        };
+
+        set((state) => {
+          const exists = state.registeredCustomers.some(
+            (c) =>
+              c.email.toLowerCase() === customerData.email.toLowerCase() ||
+              c.phone === formattedPhone
+          );
+          if (exists) {
+            return {
+              registeredCustomers: state.registeredCustomers.map((c) =>
+                c.email.toLowerCase() === customerData.email.toLowerCase()
+                  ? { ...c, name: customerData.name || c.name, phone: formattedPhone }
+                  : c
+              )
+            };
+          }
+          return {
+            registeredCustomers: [newCustomer, ...state.registeredCustomers]
+          };
+        });
+
+        return newCustomer;
+      },
       loginAs: (role) => {
         if (role === 'admin') {
           set({
@@ -384,18 +478,56 @@ export const useStore = create<StoreState>()(
           updatedAt: new Date().toISOString()
         };
 
-        set((state) => ({
-          orders: [newOrder, ...state.orders],
-          cart: [],
-          appliedCoupon: null,
-          adminStats: {
-            ...state.adminStats,
-            totalRevenue: state.adminStats.totalRevenue + newOrder.totalAmount,
-            todayRevenue: state.adminStats.todayRevenue + newOrder.totalAmount,
-            totalOrders: state.adminStats.totalOrders + 1,
-            pendingOrders: state.adminStats.pendingOrders + 1
+        set((state) => {
+          const customerEmail = newOrder.customerEmail.toLowerCase();
+          const customerExists = state.registeredCustomers.some(
+            (c) => c.email.toLowerCase() === customerEmail
+          );
+
+          let updatedCustomers = [...state.registeredCustomers];
+          if (customerExists) {
+            updatedCustomers = updatedCustomers.map((c) =>
+              c.email.toLowerCase() === customerEmail
+                ? {
+                    ...c,
+                    ordersCount: c.ordersCount + 1,
+                    totalSpent: c.totalSpent + newOrder.totalAmount,
+                    city: newOrder.shippingAddress?.city || c.city,
+                    state: newOrder.shippingAddress?.state || c.state,
+                    status:
+                      c.totalSpent + newOrder.totalAmount >= 50000 ? 'VIP' : 'ACTIVE'
+                  }
+                : c
+            );
+          } else {
+            updatedCustomers.unshift({
+              id: Date.now(),
+              name: newOrder.customerName || 'Store Customer',
+              email: newOrder.customerEmail,
+              phone: newOrder.customerPhone,
+              city: newOrder.shippingAddress?.city || 'New Delhi',
+              state: newOrder.shippingAddress?.state || 'Delhi',
+              ordersCount: 1,
+              totalSpent: newOrder.totalAmount,
+              status: newOrder.totalAmount >= 50000 ? 'VIP' : 'NEW',
+              joined: new Date().toISOString().split('T')[0]
+            });
           }
-        }));
+
+          return {
+            orders: [newOrder, ...state.orders],
+            registeredCustomers: updatedCustomers,
+            cart: [],
+            appliedCoupon: null,
+            adminStats: {
+              ...state.adminStats,
+              totalRevenue: state.adminStats.totalRevenue + newOrder.totalAmount,
+              todayRevenue: state.adminStats.todayRevenue + newOrder.totalAmount,
+              totalOrders: state.adminStats.totalOrders + 1,
+              pendingOrders: state.adminStats.pendingOrders + 1
+            }
+          };
+        });
 
         return newOrder;
       },
