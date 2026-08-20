@@ -31,83 +31,54 @@ export default function BrandLogo({
     <div className={`flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
       {/* High-Tech Vector Icon Emblem */}
       <div
-        className={`${iconSizeClass} shrink-0 bg-gradient-to-br from-slate-900 via-slate-950 to-black flex items-center justify-center relative overflow-hidden border border-sky-500/40 shadow-lg shadow-sky-500/15 group-hover:border-sky-400 group-hover:shadow-sky-500/30 transition-all duration-300`}
+        className={`${iconSizeClass} shrink-0 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 flex items-center justify-center relative overflow-hidden rounded-xl border border-sky-400/30 shadow-md shadow-sky-500/20 group-hover:border-sky-400 group-hover:shadow-sky-500/35 transition-all duration-300`}
       >
         {/* Subtle Ambient Radial Glow */}
-        <div className="absolute inset-0 bg-radial from-sky-500/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/25 via-transparent to-blue-600/15 pointer-events-none" />
 
-        {/* Futuristic 3D Isometric Nexus Data Matrix Emblem */}
+        {/* Signature Aerodynamic 'D' Data-Nexus Monogram */}
         <svg
-          viewBox="0 0 32 32"
-          className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 drop-shadow-[0_0_10px_rgba(56,189,248,0.6)]"
+          viewBox="0 0 36 36"
+          className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            {/* Gradient for Top Facet */}
-            <linearGradient id="cube-top" x1="16" y1="4" x2="16" y2="15" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#7dd3fc" />
-              <stop offset="1" stopColor="#38bdf8" />
+            {/* Primary Electric Cyan Gradient */}
+            <linearGradient id="dn-grad-1" x1="6" y1="6" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#38bdf8" />
+              <stop offset="0.5" stopColor="#0ea5e9" />
+              <stop offset="1" stopColor="#2563eb" />
             </linearGradient>
-            {/* Gradient for Left Facet */}
-            <linearGradient id="cube-left" x1="6" y1="11" x2="16" y2="28" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#0284c7" />
-              <stop offset="1" stopColor="#0369a1" />
-            </linearGradient>
-            {/* Gradient for Right Facet */}
-            <linearGradient id="cube-right" x1="26" y1="11" x2="16" y2="28" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#0ea5e9" />
-              <stop offset="1" stopColor="#1d4ed8" />
-            </linearGradient>
-            {/* Inner Core Glow */}
-            <linearGradient id="core-glow" x1="16" y1="12" x2="16" y2="20" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#ffffff" />
+
+            {/* Top Accent Gradient */}
+            <linearGradient id="dn-grad-2" x1="10" y1="6" x2="28" y2="18" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#e0f2fe" />
               <stop offset="1" stopColor="#38bdf8" />
             </linearGradient>
           </defs>
 
-          {/* Isometric Data Cube Facets */}
-          {/* Top Diamond Facet */}
+          {/* Outer Geometric 'D' Arc Loop */}
           <path
-            d="M16 4.5L25.5 10L16 15.5L6.5 10L16 4.5Z"
-            fill="url(#cube-top)"
-            stroke="#bae6fd"
-            strokeWidth="0.8"
-            strokeLinejoin="round"
-          />
-
-          {/* Left Vertical Facet */}
-          <path
-            d="M6.5 10V21L16 27.5V15.5L6.5 10Z"
-            fill="url(#cube-left)"
-            stroke="#38bdf8"
-            strokeWidth="0.8"
-            strokeLinejoin="round"
-          />
-
-          {/* Right Vertical Facet */}
-          <path
-            d="M25.5 10V21L16 27.5V15.5L25.5 10Z"
-            fill="url(#cube-right)"
-            stroke="#60a5fa"
-            strokeWidth="0.8"
-            strokeLinejoin="round"
-          />
-
-          {/* Internal Circuit Nexus Lines */}
-          <path
-            d="M16 15.5V23M16 15.5L10 12M16 15.5L22 12"
-            stroke="#ffffff"
-            strokeWidth="1"
+            d="M9 7C9 5.89543 9.89543 5 11 5H20C25.5228 5 30 9.47715 30 15C30 20.5228 25.5228 25 20 25H11C9.89543 25 9 24.1046 9 23V7Z"
+            stroke="url(#dn-grad-1)"
+            strokeWidth="3.2"
             strokeLinecap="round"
-            opacity="0.9"
+            strokeLinejoin="round"
           />
 
-          {/* Central Pulsing Nexus Node */}
-          <circle cx="16" cy="15.5" r="1.8" fill="url(#core-glow)" />
-          <circle cx="16" cy="7.5" r="1" fill="#ffffff" />
-          <circle cx="11" cy="22" r="0.9" fill="#7dd3fc" />
-          <circle cx="21" cy="22" r="0.9" fill="#93c5fd" />
+          {/* Inner Forward Speed Notch / 'N' Nexus Wing */}
+          <path
+            d="M15 11.5L21 17L15 22.5"
+            stroke="url(#dn-grad-2)"
+            strokeWidth="2.8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {/* Data Pulse Accent Dots */}
+          <circle cx="20" cy="15" r="1.5" fill="#ffffff" />
+          <circle cx="9" cy="15" r="1.2" fill="#38bdf8" />
         </svg>
       </div>
 
