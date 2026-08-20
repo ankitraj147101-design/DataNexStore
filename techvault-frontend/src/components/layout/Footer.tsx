@@ -30,92 +30,101 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white text-slate-700 border-t border-slate-200 pt-16 pb-12 mt-20">
-      <div className="w-full px-4 sm:px-8 lg:px-12 space-y-12">
+    <footer className="bg-gradient-to-b from-slate-950 via-slate-900 to-black text-slate-300 border-t border-slate-800/80 pt-16 pb-12 mt-20 relative overflow-hidden">
+      {/* Ambient Top Glow Line */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent" />
+
+      <div className="w-full px-4 sm:px-8 lg:px-12 space-y-12 relative z-10">
         {/* Value Proposition Badges */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-12 border-b border-slate-100">
-          <div className="flex items-center gap-4 bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80">
-            <div className="w-12 h-12 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 border border-sky-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pb-12 border-b border-slate-800/80">
+          <div className="flex items-center gap-4 bg-slate-900/70 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-slate-800/90 hover:border-sky-500/40 transition duration-300 group">
+            <div className="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0 border border-sky-500/20 group-hover:scale-105 transition-transform">
               <Truck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">Free Express Air Shipping</h4>
-              <p className="text-xs text-slate-500">On all prepaid orders over ₹1,500</p>
+              <h4 className="text-sm font-bold text-white tracking-tight">Free Express Air Shipping</h4>
+              <p className="text-xs text-slate-400">On all prepaid orders over ₹1,500</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80">
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
+          <div className="flex items-center gap-4 bg-slate-900/70 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-slate-800/90 hover:border-emerald-500/40 transition duration-300 group">
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/20 group-hover:scale-105 transition-transform">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">100% Genuine Products</h4>
-              <p className="text-xs text-slate-500">Direct authorized brand warranties</p>
+              <h4 className="text-sm font-bold text-white tracking-tight">100% Genuine Products</h4>
+              <p className="text-xs text-slate-400">Direct authorized brand warranties</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80">
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
+          <div className="flex items-center gap-4 bg-slate-900/70 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-slate-800/90 hover:border-emerald-500/40 transition duration-300 group">
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/20 group-hover:scale-105 transition-transform">
               <MessageSquare className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">WhatsApp Order Desk</h4>
-              <p className="text-xs text-slate-500">Live support on +91 9911371218</p>
+              <h4 className="text-sm font-bold text-white tracking-tight">WhatsApp Order Desk</h4>
+              <p className="text-xs text-slate-400">Live support on +91 9911371218</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4 bg-slate-50/70 p-4 rounded-2xl border border-slate-200/80">
-            <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200">
+          <div className="flex items-center gap-4 bg-slate-900/70 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-slate-800/90 hover:border-amber-500/40 transition duration-300 group">
+            <div className="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/20 group-hover:scale-105 transition-transform">
               <CreditCard className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-sm font-bold text-slate-900">WhatsApp Invoice & Billing</h4>
-              <p className="text-xs text-slate-500">Manual UPI / QR / Bank Transfer</p>
+              <h4 className="text-sm font-bold text-white tracking-tight">Instant UPI & Billing</h4>
+              <p className="text-xs text-slate-400">Instant QR & Bank Transfer</p>
             </div>
           </div>
         </div>
 
         {/* Main Footer Links & Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Company Bio */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center group">
-              <BrandLogo size="lg" />
+            <Link href="/" className="inline-block group">
+              <BrandLogo size="lg" variant="dark" />
             </Link>
 
-            <p className="text-xs text-slate-600 leading-relaxed max-w-sm">
-              Datanexstore is India's dedicated e-commerce platform for computer components, enthusiast mechanical keyboards, displays, NVMe storage, and PC gaming hardware.
+            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
+              DataNexStore is India's premier destination for genuine computer hardware, storage hard drives, high-speed NVMe SSDs, displays, and desktop components.
             </p>
 
-            <div className="space-y-1.5 text-xs text-slate-600 font-mono">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-sky-600 shrink-0" />
+            <div className="space-y-2 text-xs text-slate-300 font-mono pt-1">
+              <div className="flex items-center gap-2.5">
+                <MapPin className="w-4 h-4 text-sky-400 shrink-0" />
                 <span>Sector 37, Noida, Uttar Pradesh, India</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-sky-600 shrink-0" />
-                <span>Datanexstore@gmail.com</span>
+              <div className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-sky-400 shrink-0" />
+                <a href="mailto:Datanexstore@gmail.com" className="hover:text-sky-400 transition">
+                  Datanexstore@gmail.com
+                </a>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span>WhatsApp: +91 9911371218 (24x7 Order Desk)</span>
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                <a href="https://wa.me/919911371218" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition text-emerald-400 font-semibold">
+                  WhatsApp: +91 9911371218 (24x7 Support)
+                </a>
               </div>
             </div>
           </div>
 
           {/* Quick Categories */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-mono uppercase font-bold text-slate-900 tracking-wider">
-              Top Categories
+          <div className="lg:col-span-3 space-y-3.5">
+            <h4 className="text-xs font-mono uppercase font-bold text-white tracking-widest flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+              <span>Top Categories</span>
             </h4>
-            <ul className="space-y-2 text-xs text-slate-600">
+            <ul className="space-y-2.5 text-xs text-slate-400">
               {INITIAL_CATEGORIES.slice(0, 6).map((cat) => (
                 <li key={cat.id}>
                   <Link
                     href={`/products?category=${cat.slug}`}
-                    className="hover:text-sky-600 transition"
+                    className="hover:text-sky-400 transition flex items-center gap-1.5 hover:translate-x-0.5 transform duration-150"
                   >
-                    {cat.name}
+                    <span>›</span>
+                    <span>{cat.name}</span>
                   </Link>
                 </li>
               ))}
@@ -123,46 +132,52 @@ export default function Footer() {
           </div>
 
           {/* Customer Service */}
-          <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs font-mono uppercase font-bold text-slate-900 tracking-wider">
-              Quick Links
+          <div className="lg:col-span-2 space-y-3.5">
+            <h4 className="text-xs font-mono uppercase font-bold text-white tracking-widest flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+              <span>Quick Links</span>
             </h4>
-            <ul className="space-y-2 text-xs text-slate-600">
+            <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
                 <a
                   href="https://wa.me/919911371218"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-emerald-700 transition text-emerald-600 font-semibold"
+                  className="hover:text-emerald-300 transition text-emerald-400 font-semibold flex items-center gap-1.5"
                 >
-                  WhatsApp Helpdesk
+                  <span>›</span>
+                  <span>WhatsApp Helpdesk</span>
                 </a>
               </li>
               <li>
-                <Link href="/track-order" className="hover:text-sky-600 transition">
-                  Track Air Shipment
+                <Link href="/track-order" className="hover:text-sky-400 transition flex items-center gap-1.5 hover:translate-x-0.5 transform duration-150">
+                  <span>›</span>
+                  <span>Track Air Shipment</span>
                 </Link>
               </li>
               <li>
-                <Link href="/compare" className="hover:text-sky-600 transition">
-                  Hardware Comparison Matrix
+                <Link href="/compare" className="hover:text-sky-400 transition flex items-center gap-1.5 hover:translate-x-0.5 transform duration-150">
+                  <span>›</span>
+                  <span>Hardware Comparison</span>
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard" className="hover:text-sky-600 transition">
-                  Customer Account & Orders
+                <Link href="/dashboard" className="hover:text-sky-400 transition flex items-center gap-1.5 hover:translate-x-0.5 transform duration-150">
+                  <span>›</span>
+                  <span>Customer Portal</span>
                 </Link>
               </li>
             </ul>
           </div>
 
           {/* Newsletter Subscription */}
-          <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs font-mono uppercase font-bold text-slate-900 tracking-wider">
-              Order Alerts & News
+          <div className="lg:col-span-3 space-y-3.5">
+            <h4 className="text-xs font-mono uppercase font-bold text-white tracking-widest flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+              <span>Order Alerts & Updates</span>
             </h4>
-            <p className="text-xs text-slate-500">
-              Get flash sale alerts, restock notifications, and exclusive promo coupon drops.
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Get flash sale alerts, restock notifications, and exclusive hardware promos.
             </p>
 
             <form onSubmit={handleSubscribe} className="space-y-2">
@@ -173,11 +188,11 @@ export default function Footer() {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-slate-50 text-xs text-slate-900 px-3.5 py-2.5 rounded-xl border border-slate-200 flex-1 focus:border-sky-500 focus:outline-none"
+                  className="bg-slate-900/90 text-xs text-white placeholder-slate-500 px-3.5 py-2.5 rounded-xl border border-slate-800 flex-1 focus:border-sky-400 focus:outline-none transition"
                 />
                 <button
                   type="submit"
-                  className="bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1 shadow-xs"
+                  className="bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-1 shadow-md shadow-sky-600/30"
                 >
                   <span>Join</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -185,9 +200,9 @@ export default function Footer() {
               </div>
 
               {subscribed && (
-                <div className="flex items-center gap-1 text-emerald-600 text-[11px] font-mono">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Subscribed successfully! Welcome to Datanexstore.</span>
+                <div className="flex items-center gap-1.5 text-emerald-400 text-[11px] font-mono pt-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                  <span>Subscribed successfully! Welcome to DataNexStore.</span>
                 </div>
               )}
             </form>
@@ -195,12 +210,15 @@ export default function Footer() {
         </div>
 
         {/* Legal & Copyright */}
-        <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+        <div className="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
           <div>
-            © {new Date().getFullYear()} Datanexstore Retail Private Limited. All rights reserved.
+            © {new Date().getFullYear()} DataNexStore. All rights reserved.
           </div>
-          <div className="flex items-center gap-4">
-            <span>Official WhatsApp: +91 9911371218</span>
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 bg-emerald-950/60 border border-emerald-800/60 text-emerald-400 px-2.5 py-1 rounded-full text-[11px]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Official WhatsApp: +91 9911371218</span>
+            </span>
           </div>
         </div>
       </div>
