@@ -476,6 +476,94 @@ export const INITIAL_PRODUCTS: Product[] = [
       { fieldKey: 'antennas', fieldName: 'Antenna Array', fieldValue: '6 High-Gain External Beamforming Antennas', groupName: 'Hardware' },
       { fieldKey: 'ports', fieldName: 'Physical Ports', fieldValue: '1x Gigabit WAN + 4x Gigabit LAN + 1x USB 3.0 Port', groupName: 'Connectivity' }
     ]
+  },
+  {
+    id: 9,
+    name: 'WD Blue 500GB Internal Desktop Hard Drive (WD5000AZRZ)',
+    slug: 'wd-blue-500gb-internal-desktop-hard-drive-wd5000azrz',
+    sku: 'HDD-WD-500GB-AZRZ',
+    brand: INITIAL_BRANDS[9],
+    category: INITIAL_CATEGORIES[2],
+    shortDescription: 'WD Blue 500GB 3.5-inch internal desktop hard drive featuring SATA 6Gb/s interface, 64MB cache and 5400 RPM class performance.',
+    description: 'WD Blue 500GB Internal Desktop Hard Drive is designed to provide reliable storage for desktop computers. With 500GB capacity, it offers ample space for storing documents, photos, videos, applications and other important data.\n\nThe drive features a SATA 6Gb/s interface, 64MB cache and 5400 RPM class rotational speed, making it suitable for everyday desktop storage requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
+    basePrice: 1899,
+    mrpPrice: 2999,
+    discountPercentage: 36,
+    isFeatured: true,
+    isTrending: true,
+    isBestSeller: true,
+    isDealOfTheDay: false,
+    isNewArrival: true,
+    isActive: true,
+    warrantyInfo: '2 Years Manufacturer Warranty',
+    ratingAverage: 4.7,
+    ratingCount: 148,
+    soldCount: 640,
+    stock: 45,
+    createdAt: '2026-08-20T00:00:00Z',
+    images: [
+      { id: 12, imageUrl: '/products/wd-blue-500gb-front.png', isPrimary: true, sortOrder: 1 },
+      { id: 13, imageUrl: '/products/wd-blue-500gb-back.png', isPrimary: false, sortOrder: 2 }
+    ],
+    variants: [
+      { id: 19, productId: 9, variantName: '500GB SATA 3.5" Desktop HDD', sku: 'HDD-WD-500GB-AZRZ', price: 1899, mrpPrice: 2999, attributes: { capacity: '500GB', rpm: '5400 RPM' }, isDefault: true, stock: 45 }
+    ],
+    specifications: [
+      { fieldKey: 'brand', fieldName: 'Brand', fieldValue: 'Western Digital (WD)', groupName: 'General' },
+      { fieldKey: 'series', fieldName: 'Product Series', fieldValue: 'WD Blue', groupName: 'General' },
+      { fieldKey: 'model', fieldName: 'Model Number', fieldValue: 'WD5000AZRZ', groupName: 'General' },
+      { fieldKey: 'capacity', fieldName: 'Storage Capacity', fieldValue: '500GB', groupName: 'Storage' },
+      { fieldKey: 'form_factor', fieldName: 'Form Factor', fieldValue: '3.5 Inch – Desktop Internal HDD', groupName: 'Physical' },
+      { fieldKey: 'interface', fieldName: 'Interface', fieldValue: 'SATA 6Gb/s', groupName: 'Performance' },
+      { fieldKey: 'cache', fieldName: 'Cache Memory', fieldValue: '64MB', groupName: 'Performance' },
+      { fieldKey: 'speed', fieldName: 'Speed', fieldValue: '5400 RPM Class', groupName: 'Performance' },
+      { fieldKey: 'type', fieldName: 'Product Type', fieldValue: 'Internal Hard Disk Drive (HDD)', groupName: 'Technical' },
+      { fieldKey: 'compatibility', fieldName: 'Compatibility', fieldValue: 'Desktop PC / Computer & Storage Upgrade', groupName: 'General' }
+    ]
+  },
+  {
+    id: 10,
+    name: 'WD Blue 1TB Internal Desktop Hard Drive 7200 RPM (WD10EZEX)',
+    slug: 'wd-blue-1tb-internal-desktop-hard-drive-7200rpm-wd10ezex',
+    sku: 'HDD-WD-1TB-EZEX',
+    brand: INITIAL_BRANDS[9],
+    category: INITIAL_CATEGORIES[2],
+    shortDescription: 'WD Blue 1TB 3.5-inch Internal Desktop Hard Drive with SATA interface, 64MB cache and 7200 RPM Class performance for high-speed storage.',
+    description: 'WD Blue 1TB Internal Desktop Hard Drive is a reliable storage solution designed for desktop computers. With 1TB of storage capacity, it provides sufficient space for storing documents, photos, videos, software, games and other important data.\n\nFeaturing 64MB cache and 7200 RPM Class performance, this hard drive is suitable for everyday desktop computing and storage requirements. Its 3.5-inch form factor makes it compatible with desktop PC systems that support standard 3.5-inch internal drives.',
+    basePrice: 3499,
+    mrpPrice: 4999,
+    discountPercentage: 30,
+    isFeatured: true,
+    isTrending: true,
+    isBestSeller: true,
+    isDealOfTheDay: true,
+    isNewArrival: true,
+    isActive: true,
+    warrantyInfo: '2 Years Manufacturer Warranty',
+    ratingAverage: 4.8,
+    ratingCount: 380,
+    soldCount: 1250,
+    stock: 60,
+    createdAt: '2026-08-20T00:00:00Z',
+    images: [
+      { id: 14, imageUrl: '/products/wd-blue-1tb-front.png', isPrimary: true, sortOrder: 1 },
+      { id: 15, imageUrl: '/products/wd-blue-1tb-back.png', isPrimary: false, sortOrder: 2 }
+    ],
+    variants: [
+      { id: 20, productId: 10, variantName: '1TB 7200 RPM 3.5" Desktop HDD', sku: 'HDD-WD-1TB-EZEX', price: 3499, mrpPrice: 4999, attributes: { capacity: '1TB', rpm: '7200 RPM' }, isDefault: true, stock: 60 }
+    ],
+    specifications: [
+      { fieldKey: 'brand', fieldName: 'Brand', fieldValue: 'Western Digital (WD)', groupName: 'General' },
+      { fieldKey: 'series', fieldName: 'Product Series', fieldValue: 'WD Blue', groupName: 'General' },
+      { fieldKey: 'model', fieldName: 'Model Number', fieldValue: 'WD10EZEX', groupName: 'General' },
+      { fieldKey: 'capacity', fieldName: 'Storage Capacity', fieldValue: '1TB (1,000 GB)', groupName: 'Storage' },
+      { fieldKey: 'form_factor', fieldName: 'Form Factor', fieldValue: '3.5 Inch', groupName: 'Physical' },
+      { fieldKey: 'interface', fieldName: 'Interface', fieldValue: 'SATA 6Gb/s', groupName: 'Performance' },
+      { fieldKey: 'cache', fieldName: 'Cache Memory', fieldValue: '64MB', groupName: 'Performance' },
+      { fieldKey: 'speed', fieldName: 'Speed', fieldValue: '7200 RPM Class', groupName: 'Performance' },
+      { fieldKey: 'type', fieldName: 'Drive Technology', fieldValue: 'Internal Mechanical Hard Disk Drive (HDD)', groupName: 'Technical' },
+      { fieldKey: 'compatibility', fieldName: 'Compatibility', fieldValue: 'Desktop PC / Computer / Storage & Backup', groupName: 'General' }
+    ]
   }
 ];
 
