@@ -119,13 +119,11 @@ function AdminLoginGate({ onLoginSuccess }: { onLoginSuccess: () => void }) {
         <div className="w-full max-w-md bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-900/5 space-y-6">
           
           {/* Header */}
-          <div className="text-center space-y-2.5">
-            <div className="w-14 h-14 rounded-2xl bg-slate-900 text-sky-400 flex items-center justify-center mx-auto shadow-md shadow-slate-900/10">
-              <Zap className="w-7 h-7 fill-sky-400" />
-            </div>
+          <div className="text-center space-y-3 flex flex-col items-center">
+            <BrandLogo size="lg" showTagline={false} />
             <div className="space-y-0.5">
-              <h1 className="text-2xl font-black text-slate-900 font-mono tracking-tight">
-                DATANEX<span className="text-sky-600">ADMIN</span>
+              <h1 className="text-xl font-black text-slate-900 font-mono tracking-tight">
+                ADMIN CONTROL CENTER
               </h1>
               <p className="text-xs text-slate-500 font-mono">
                 Storefront Management Portal Login
@@ -257,7 +255,7 @@ export default function AdminLayout({
     if (key === 'categories') return `${categories.length}`;
     if (key === 'coupons') return `${coupons.length}`;
     if (key === 'reviews') return `${reviews.length}`;
-    if (key === 'customers') return '4 Active';
+    if (key === 'customers') return `${orders.length} Accounts`;
     return null;
   };
 
