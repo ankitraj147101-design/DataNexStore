@@ -31,54 +31,71 @@ export default function BrandLogo({
     <div className={`flex items-center gap-2.5 sm:gap-3 select-none ${className}`}>
       {/* High-Tech Vector Icon Emblem */}
       <div
-        className={`${iconSizeClass} shrink-0 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 flex items-center justify-center relative overflow-hidden rounded-xl border border-sky-400/30 shadow-md shadow-sky-500/20 group-hover:border-sky-400 group-hover:shadow-sky-500/35 transition-all duration-300`}
+        className={`${iconSizeClass} shrink-0 bg-gradient-to-b from-slate-900 to-slate-950 flex items-center justify-center relative overflow-hidden rounded-xl border border-sky-500/30 shadow-md shadow-sky-500/15 group-hover:border-sky-400 group-hover:shadow-sky-500/30 transition-all duration-300`}
       >
         {/* Subtle Ambient Radial Glow */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-sky-500/25 via-transparent to-blue-600/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-radial from-sky-500/20 via-transparent to-transparent pointer-events-none" />
 
-        {/* Signature Aerodynamic 'D' Data-Nexus Monogram */}
+        {/* Clean Iconic Cyber Hardware Microchip Emblem */}
         <svg
-          viewBox="0 0 36 36"
-          className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 drop-shadow-[0_0_8px_rgba(56,189,248,0.7)]"
+          viewBox="0 0 32 32"
+          className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 drop-shadow-[0_0_6px_rgba(56,189,248,0.5)]"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            {/* Primary Electric Cyan Gradient */}
-            <linearGradient id="dn-grad-1" x1="6" y1="6" x2="30" y2="30" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#38bdf8" />
-              <stop offset="0.5" stopColor="#0ea5e9" />
-              <stop offset="1" stopColor="#2563eb" />
-            </linearGradient>
-
-            {/* Top Accent Gradient */}
-            <linearGradient id="dn-grad-2" x1="10" y1="6" x2="28" y2="18" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#e0f2fe" />
-              <stop offset="1" stopColor="#38bdf8" />
+            <linearGradient id="chip-core" x1="9" y1="9" x2="23" y2="23" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#0ea5e9" />
+              <stop offset="1" stopColor="#0369a1" />
             </linearGradient>
           </defs>
 
-          {/* Outer Geometric 'D' Arc Loop */}
-          <path
-            d="M9 7C9 5.89543 9.89543 5 11 5H20C25.5228 5 30 9.47715 30 15C30 20.5228 25.5228 25 20 25H11C9.89543 25 9 24.1046 9 23V7Z"
-            stroke="url(#dn-grad-1)"
-            strokeWidth="3.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          {/* Top Pins */}
+          <line x1="12" y1="3" x2="12" y2="8" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="16" y1="3" x2="16" y2="8" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="20" y1="3" x2="20" y2="8" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+
+          {/* Bottom Pins */}
+          <line x1="12" y1="24" x2="12" y2="29" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="16" y1="24" x2="16" y2="29" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="20" y1="24" x2="20" y2="29" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+
+          {/* Left Pins */}
+          <line x1="3" y1="12" x2="8" y2="12" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="3" y1="16" x2="8" y2="16" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="3" y1="20" x2="8" y2="20" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+
+          {/* Right Pins */}
+          <line x1="24" y1="12" x2="29" y2="12" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="24" y1="16" x2="29" y2="16" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="24" y1="20" x2="29" y2="20" stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" />
+
+          {/* Outer Chip Silicon Die */}
+          <rect
+            x="7.5"
+            y="7.5"
+            width="17"
+            height="17"
+            rx="3.5"
+            fill="#0f172a"
+            stroke="#38bdf8"
+            strokeWidth="1.5"
           />
 
-          {/* Inner Forward Speed Notch / 'N' Nexus Wing */}
-          <path
-            d="M15 11.5L21 17L15 22.5"
-            stroke="url(#dn-grad-2)"
-            strokeWidth="2.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
+          {/* Inner Glowing Processor Core */}
+          <rect
+            x="11"
+            y="11"
+            width="10"
+            height="10"
+            rx="2"
+            fill="url(#chip-core)"
+            stroke="#7dd3fc"
+            strokeWidth="0.8"
           />
 
-          {/* Data Pulse Accent Dots */}
-          <circle cx="20" cy="15" r="1.5" fill="#ffffff" />
-          <circle cx="9" cy="15" r="1.2" fill="#38bdf8" />
+          {/* Center Glowing Silicon Nexus Dot */}
+          <circle cx="16" cy="16" r="2" fill="#ffffff" />
         </svg>
       </div>
 
