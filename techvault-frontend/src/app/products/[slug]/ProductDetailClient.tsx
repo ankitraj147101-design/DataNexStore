@@ -362,7 +362,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
                 {product.name}
               </h1>
               <p className="text-xs sm:text-sm font-semibold text-slate-500">
-                Official India Sealed Unit with Comprehensive Warranty Protection
+                100% Original Brand Sealed Unit in Anti-Static Packing
               </p>
             </div>
 
@@ -531,18 +531,18 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
             <div className="grid grid-cols-3 gap-3 pt-2 border-t border-slate-100">
               <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
                 <ShieldCheck className="w-5 h-5 text-sky-600 mx-auto" />
-                <div className="text-[11px] font-bold text-slate-800 font-mono">3 Yr Warranty</div>
-                <div className="text-[10px] text-slate-400">Official Brand</div>
+                <div className="text-[11px] font-bold text-slate-800 font-mono">100% Genuine</div>
+                <div className="text-[10px] text-slate-400">Sealed Pack Unit</div>
               </div>
               <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
                 <Truck className="w-5 h-5 text-emerald-600 mx-auto" />
                 <div className="text-[11px] font-bold text-slate-800 font-mono">Free Express</div>
-                <div className="text-[10px] text-slate-400">Insured Delivery</div>
+                <div className="text-[10px] text-slate-400">Safe Delivery</div>
               </div>
               <div className="text-center p-3 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
-                <RotateCcw className="w-5 h-5 text-indigo-600 mx-auto" />
-                <div className="text-[11px] font-bold text-slate-800 font-mono">7 Days Return</div>
-                <div className="text-[10px] text-slate-400">Easy Replacement</div>
+                <MessageSquare className="w-5 h-5 text-emerald-600 mx-auto" />
+                <div className="text-[11px] font-bold text-slate-800 font-mono">WhatsApp Desk</div>
+                <div className="text-[10px] text-slate-400">+91 9911371218</div>
               </div>
             </div>
           </div>

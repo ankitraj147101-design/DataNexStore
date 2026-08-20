@@ -4,7 +4,7 @@ import React from 'react';
 import {
   Truck,
   ShieldCheck,
-  RotateCcw,
+  MessageSquare,
   CreditCard,
   Headphones,
   CheckCircle2
@@ -20,8 +20,8 @@ export default function TrustFeatures() {
             <Truck className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-xs font-bold text-slate-900">Same-Day Dispatch</div>
-            <div className="text-[11px] text-slate-500">Orders before 2 PM</div>
+            <div className="text-xs font-bold text-slate-900">Express Dispatch</div>
+            <div className="text-[11px] text-slate-500">Same-day processing</div>
           </div>
         </div>
 
@@ -31,17 +31,17 @@ export default function TrustFeatures() {
           </div>
           <div>
             <div className="text-xs font-bold text-slate-900">100% Genuine Sealed</div>
-            <div className="text-[11px] text-slate-500">Official OEM Warranty</div>
+            <div className="text-[11px] text-slate-500">Factory Certified Unit</div>
           </div>
         </div>
 
         <div className="flex items-center gap-3 pt-2 sm:pt-0 sm:px-3">
-          <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
-            <RotateCcw className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+            <MessageSquare className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-xs font-bold text-slate-900">7-Day Replacement</div>
-            <div className="text-[11px] text-slate-500">Hassle-free policy</div>
+            <div className="text-xs font-bold text-slate-900">Live WhatsApp Desk</div>
+            <div className="text-[11px] text-slate-500">+91 9911371218</div>
           </div>
         </div>
 
