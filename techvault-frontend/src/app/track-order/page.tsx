@@ -40,9 +40,9 @@ function TrackOrderContent() {
   };
 
   const checkpoints = [
-    { title: 'Electronic Shipping Info Received', location: 'DataNex Warehouse, Bengaluru Hub', time: '15 Aug 2026, 11:30 AM', done: true },
-    { title: 'Package Picked Up & Screened', location: 'Bengaluru Sort Facility', time: '15 Aug 2026, 04:15 PM', done: true },
-    { title: 'Departed Facility in Transit', location: 'Blue Dart Aviation Cargo (Flight BLR-DEL)', time: '16 Aug 2026, 02:00 AM', done: true },
+    { title: 'Electronic Shipping Info Received', location: 'DataNex Warehouse, Noida Hub', time: '15 Aug 2026, 11:30 AM', done: true },
+    { title: 'Package Picked Up & Screened', location: 'Noida Logistics Facility, Sector 37', time: '15 Aug 2026, 04:15 PM', done: true },
+    { title: 'Departed Facility in Transit', location: 'Express Logistics Cargo', time: '16 Aug 2026, 02:00 AM', done: true },
     { title: 'Arrived at Destination Distribution Center', location: 'Delhi Express Logistics Hub', time: '16 Aug 2026, 08:45 AM', done: order?.status === 'SHIPPED' || order?.status === 'OUT_FOR_DELIVERY' || order?.status === 'DELIVERED' },
     { title: 'Out for Delivery (Courier Assigned)', location: 'Delivery Agent (Ramesh S. - OTP Verification)', time: '17 Aug 2026, 09:30 AM', done: order?.status === 'OUT_FOR_DELIVERY' || order?.status === 'DELIVERED' },
     { title: 'Delivered & Handed Over', location: 'Recipient Doorstep', time: 'Estimated by 6:00 PM', done: order?.status === 'DELIVERED' }

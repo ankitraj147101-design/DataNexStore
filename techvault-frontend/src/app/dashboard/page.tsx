@@ -44,7 +44,7 @@ export default function DashboardPage() {
   const [lastName, setLastName] = useState(currentUser?.lastName || '');
   const [phone, setPhone] = useState(currentUser?.phone || '+91 9911371218');
   const [email, setEmail] = useState(currentUser?.email || 'customer@datanexstore.in');
-  const [gstin, setGstin] = useState('29AABCT8829K1ZR');
+  const [gstin, setGstin] = useState('');
   const [savedSuccess, setSavedSuccess] = useState(false);
 
   // Address modal state
@@ -55,10 +55,10 @@ export default function DashboardPage() {
       tag: 'HOME (DEFAULT)',
       name: currentUser ? `${currentUser.firstName} ${currentUser.lastName}`.trim() : 'Customer',
       phone: currentUser?.phone || '+91 9911371218',
-      line1: 'Flat 402, Skyline Residency, Outer Ring Road',
-      city: 'Bengaluru',
-      state: 'Karnataka',
-      pincode: '560103',
+      line1: 'Sector 37',
+      city: 'Noida',
+      state: 'Uttar Pradesh',
+      pincode: '201303',
       isDefault: true
     }
   ]);
@@ -497,7 +497,7 @@ export default function DashboardPage() {
                       type="text"
                       value={gstin}
                       onChange={(e) => setGstin(e.target.value.toUpperCase())}
-                      placeholder="e.g. 29AABCT8829K1ZR"
+                      placeholder="e.g. GSTIN (Optional)"
                       className="w-full bg-slate-50 text-xs text-slate-900 p-3.5 rounded-2xl border border-slate-200 focus:border-sky-500 focus:outline-none font-mono"
                     />
                   </div>

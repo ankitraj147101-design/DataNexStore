@@ -90,7 +90,7 @@ export default function Footer() {
             <div className="space-y-1.5 text-xs text-slate-600 font-mono">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-sky-600 shrink-0" />
-                <span>Indiranagar, Bengaluru, Karnataka 560038</span>
+                <span>Sector 37, Noida, Uttar Pradesh, India</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-sky-600 shrink-0" />
@@ -200,8 +200,6 @@ export default function Footer() {
             © {new Date().getFullYear()} Datanexstore Retail Private Limited. All rights reserved.
           </div>
           <div className="flex items-center gap-4">
-            <span>GSTIN: 29AABCT8829K1ZR</span>
-            <span>•</span>
             <span>Official WhatsApp: +91 9911371218</span>
           </div>
         </div>
