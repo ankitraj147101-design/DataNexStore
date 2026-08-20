@@ -214,11 +214,8 @@ export default function Footer() {
           <div>
             © {new Date().getFullYear()} DataNexStore. All rights reserved.
           </div>
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 bg-emerald-950/60 border border-emerald-800/60 text-emerald-400 px-2.5 py-1 rounded-full text-[11px]">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Official WhatsApp: +91 9911371218</span>
-            </span>
+          <div className="text-slate-500 text-xs">
+            Genuine Hardware & Storage Solutions
           </div>
         </div>
       </div>
