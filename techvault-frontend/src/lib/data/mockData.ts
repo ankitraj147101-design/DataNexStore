@@ -246,6 +246,96 @@ export const INITIAL_PRODUCTS: Product[] = [
       { fieldKey: 'type', fieldName: 'Drive Technology', fieldValue: 'Internal Mechanical Hard Disk Drive (HDD)', groupName: 'Technical' },
       { fieldKey: 'compatibility', fieldName: 'Compatibility', fieldValue: 'Desktop PC / Computer / Storage & Backup', groupName: 'General' }
     ]
+  },
+  {
+    id: 3,
+    name: 'WD Green 2TB Internal Desktop Hard Drive (WD20EZRX)',
+    slug: 'wd-green-2tb-internal-desktop-hard-drive-wd20ezrx',
+    sku: 'HDD-WD-2TB-EZRX',
+    brand: INITIAL_BRANDS[9],
+    category: INITIAL_CATEGORIES[2],
+    shortDescription: 'WD Green 2TB WD20EZRX 3.5-inch Internal Desktop Hard Drive with SATA interface and 64MB cache. Ideal for desktop PCs, high-capacity data storage, backups, photos, videos and everyday computing needs.',
+    description: 'WD Green 2TB Internal Desktop Hard Drive provides high-capacity storage for desktop computers. With 2TB of storage, it offers plenty of space for storing documents, photos, videos, music, software, backups and other important files.\n\nThe drive features a SATA interface and 64MB cache, making it suitable for everyday desktop storage requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
+    basePrice: 4499,
+    mrpPrice: 6999,
+    discountPercentage: 35,
+    isFeatured: true,
+    isTrending: true,
+    isBestSeller: true,
+    isDealOfTheDay: false,
+    isNewArrival: true,
+    isActive: true,
+    warrantyInfo: '2 Years Manufacturer Warranty',
+    ratingAverage: 4.8,
+    ratingCount: 210,
+    soldCount: 890,
+    stock: 50,
+    createdAt: '2026-08-20T00:00:00Z',
+    images: [
+      { id: 5, imageUrl: '/products/wd-green-2tb-front.png', isPrimary: true, sortOrder: 1 },
+      { id: 6, imageUrl: '/products/wd-green-2tb-back.png', isPrimary: false, sortOrder: 2 }
+    ],
+    variants: [
+      { id: 3, productId: 3, variantName: '2TB SATA 3.5" Desktop HDD', sku: 'HDD-WD-2TB-EZRX', price: 4499, mrpPrice: 6999, attributes: { capacity: '2TB', cache: '64MB' }, isDefault: true, stock: 50 }
+    ],
+    specifications: [
+      { fieldKey: 'brand', fieldName: 'Brand', fieldValue: 'Western Digital (WD)', groupName: 'General' },
+      { fieldKey: 'series', fieldName: 'Product Series', fieldValue: 'WD Green', groupName: 'General' },
+      { fieldKey: 'model', fieldName: 'Model Number', fieldValue: 'WD20EZRX', groupName: 'General' },
+      { fieldKey: 'capacity', fieldName: 'Storage Capacity', fieldValue: '2TB (2,000 GB)', groupName: 'Storage' },
+      { fieldKey: 'form_factor', fieldName: 'Form Factor', fieldValue: '3.5 Inch', groupName: 'Physical' },
+      { fieldKey: 'interface', fieldName: 'Interface', fieldValue: 'SATA', groupName: 'Performance' },
+      { fieldKey: 'cache', fieldName: 'Cache Memory', fieldValue: '64MB', groupName: 'Performance' },
+      { fieldKey: 'type', fieldName: 'Drive Type', fieldValue: 'Internal Mechanical HDD', groupName: 'Technical' },
+      { fieldKey: 'drive_tech', fieldName: 'Drive Technology', fieldValue: 'Mechanical Hard Disk', groupName: 'Technical' },
+      { fieldKey: 'compatibility', fieldName: 'Compatibility', fieldValue: 'Desktop PC / Computer', groupName: 'General' },
+      { fieldKey: 'ideal_for', fieldName: 'Ideal For', fieldValue: 'Data Storage, Backup, Documents, Photos, Videos & General Computing', groupName: 'Usage' }
+    ]
+  },
+  {
+    id: 4,
+    name: 'WD Green 3TB Internal Desktop Hard Drive (WD30EZRX)',
+    slug: 'wd-green-3tb-internal-desktop-hard-drive-wd30ezrx',
+    sku: 'HDD-WD-3TB-EZRX',
+    brand: INITIAL_BRANDS[9],
+    category: INITIAL_CATEGORIES[2],
+    shortDescription: 'WD Green 3TB WD30EZRX 3.5-inch Internal Desktop Hard Drive with SATA interface and 64MB cache. Ideal for desktop PCs, high-capacity storage, data backup, photos, videos and everyday computing needs.',
+    description: 'WD Green 3TB Internal Desktop Hard Drive is designed to provide high-capacity storage for desktop computers. With 3TB of storage capacity, it provides ample space for storing large collections of documents, photos, videos, music, software, backups and other important files.\n\nThe drive features a SATA interface and 64MB cache, making it suitable for everyday desktop storage requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
+    basePrice: 5899,
+    mrpPrice: 8999,
+    discountPercentage: 34,
+    isFeatured: true,
+    isTrending: true,
+    isBestSeller: true,
+    isDealOfTheDay: true,
+    isNewArrival: true,
+    isActive: true,
+    warrantyInfo: '2 Years Manufacturer Warranty',
+    ratingAverage: 4.9,
+    ratingCount: 320,
+    soldCount: 1120,
+    stock: 40,
+    createdAt: '2026-08-20T00:00:00Z',
+    images: [
+      { id: 7, imageUrl: '/products/wd-green-3tb-front.png', isPrimary: true, sortOrder: 1 },
+      { id: 8, imageUrl: '/products/wd-green-3tb-back.png', isPrimary: false, sortOrder: 2 }
+    ],
+    variants: [
+      { id: 4, productId: 4, variantName: '3TB SATA 3.5" Desktop HDD', sku: 'HDD-WD-3TB-EZRX', price: 5899, mrpPrice: 8999, attributes: { capacity: '3TB', cache: '64MB' }, isDefault: true, stock: 40 }
+    ],
+    specifications: [
+      { fieldKey: 'brand', fieldName: 'Brand', fieldValue: 'Western Digital (WD)', groupName: 'General' },
+      { fieldKey: 'series', fieldName: 'Product Series', fieldValue: 'WD Green', groupName: 'General' },
+      { fieldKey: 'model', fieldName: 'Model Number', fieldValue: 'WD30EZRX', groupName: 'General' },
+      { fieldKey: 'capacity', fieldName: 'Storage Capacity', fieldValue: '3TB (3,000 GB)', groupName: 'Storage' },
+      { fieldKey: 'form_factor', fieldName: 'Form Factor', fieldValue: '3.5 Inch', groupName: 'Physical' },
+      { fieldKey: 'interface', fieldName: 'Interface', fieldValue: 'SATA', groupName: 'Performance' },
+      { fieldKey: 'cache', fieldName: 'Cache Memory', fieldValue: '64MB', groupName: 'Performance' },
+      { fieldKey: 'type', fieldName: 'Drive Type', fieldValue: 'Internal Mechanical HDD', groupName: 'Technical' },
+      { fieldKey: 'drive_tech', fieldName: 'Drive Technology', fieldValue: 'Mechanical Hard Disk', groupName: 'Technical' },
+      { fieldKey: 'compatibility', fieldName: 'Compatibility', fieldValue: 'Desktop PC / Computer', groupName: 'General' },
+      { fieldKey: 'ideal_for', fieldName: 'Ideal For', fieldValue: 'Data Storage, Backup, Photos, Videos, Documents & General Computing', groupName: 'Usage' }
+    ]
   }
 ];
 
@@ -278,13 +368,13 @@ export const INITIAL_COUPONS: Coupon[] = [
     id: 3,
     code: 'DATANEXVIP',
     title: '15% Component Upgrade Offer',
-    description: 'Save up to ₹3,500 on Processors, NVMe SSDs, and Custom Keyboards',
+    description: 'Special 15% discount on custom PC builds and premium hardware',
     discountType: 'PERCENTAGE',
     discountValue: 15,
-    minOrderValue: 10000,
-    maxDiscountAmount: 3500,
+    minOrderValue: 7999,
+    maxDiscountAmount: 3000,
     isActive: true,
-    expiryDate: '2027-06-30'
+    expiryDate: '2027-12-31'
   }
 ];
 
@@ -314,6 +404,32 @@ export const INITIAL_REVIEWS: Review[] = [
     isApproved: true,
     createdAt: '2026-08-18T09:15:00Z',
     likesCount: 34
+  },
+  {
+    id: 3,
+    productId: 3,
+    userId: 4,
+    userName: 'Kunal Singhal',
+    rating: 5,
+    title: 'Silent & Reliable 2TB Storage for Desktop PC',
+    comment: 'WD Green 2TB is whisper quiet and runs cool. Perfect for mass media storage and system backups. Great price from DataNexStore!',
+    isVerifiedPurchase: true,
+    isApproved: true,
+    createdAt: '2026-08-19T11:20:00Z',
+    likesCount: 19
+  },
+  {
+    id: 4,
+    productId: 4,
+    userId: 5,
+    userName: 'Manish Verma',
+    rating: 5,
+    title: 'Ample 3TB Capacity & 64MB Cache',
+    comment: 'Installed the 3TB WD Green HDD in my workstation. Formatted instantly and transferring huge 4K video files smoothly.',
+    isVerifiedPurchase: true,
+    isApproved: true,
+    createdAt: '2026-08-20T08:45:00Z',
+    likesCount: 25
   }
 ];
 
