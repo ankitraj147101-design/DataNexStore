@@ -26,6 +26,7 @@ import { useStore } from '@/store/useStore';
 import { INITIAL_CATEGORIES } from '@/lib/data/mockData';
 import AuthModal from '@/components/auth/AuthModal';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
+import BrandLogo from '@/components/common/BrandLogo';
 
 export default function Navbar() {
   const router = useRouter();
@@ -87,11 +88,7 @@ export default function Navbar() {
           {/* Brand Logo & Name */}
           <div className="flex items-center gap-3 sm:gap-6 shrink-0">
             <Link href="/" className="flex items-center group">
-              <img
-                src="/datanexstore-logo.jpg"
-                alt="DataNexStore Logo"
-                className="h-9 sm:h-11 w-auto object-contain group-hover:opacity-90 transition-opacity"
-              />
+              <BrandLogo size="md" />
             </Link>
 
             {/* Category Dropdown Button (Desktop) */}

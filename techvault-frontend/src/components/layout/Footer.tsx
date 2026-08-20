@@ -15,6 +15,7 @@ import {
   MapPin
 } from 'lucide-react';
 import { INITIAL_CATEGORIES } from '@/lib/data/mockData';
+import BrandLogo from '@/components/common/BrandLogo';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -79,11 +80,7 @@ export default function Footer() {
           {/* Company Bio */}
           <div className="lg:col-span-4 space-y-4">
             <Link href="/" className="flex items-center group">
-              <img
-                src="/datanexstore-logo.jpg"
-                alt="DataNexStore Logo"
-                className="h-10 w-auto object-contain group-hover:opacity-90 transition-opacity"
-              />
+              <BrandLogo size="lg" />
             </Link>
 
             <p className="text-xs text-slate-600 leading-relaxed max-w-sm">

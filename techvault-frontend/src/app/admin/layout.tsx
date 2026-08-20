@@ -35,6 +35,7 @@ import {
   Command
 } from 'lucide-react';
 import { useStore } from '@/store/useStore';
+import BrandLogo from '@/components/common/BrandLogo';
 
 const ADMIN_NAV = [
   { name: 'Executive Overview', href: '/admin', icon: LayoutDashboard, badge: 'Live' },
@@ -293,12 +294,8 @@ export default function AdminLayout({
             <div className="h-5 w-px bg-slate-200 hidden sm:block"></div>
 
             <div className="flex items-center gap-2">
-              <img
-                src="/datanexstore-logo.jpg"
-                alt="DataNexStore Logo"
-                className="h-8 w-auto object-contain"
-              />
-              <span className="bg-slate-900 text-white font-mono text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
+              <BrandLogo size="sm" showTagline={false} />
+              <span className="bg-slate-900 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider">
                 Admin
               </span>
             </div>
