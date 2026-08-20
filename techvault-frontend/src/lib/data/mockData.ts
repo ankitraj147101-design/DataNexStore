@@ -256,9 +256,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: INITIAL_CATEGORIES[2],
     shortDescription: 'WD Green 2TB WD20EZRX 3.5-inch Internal Desktop Hard Drive with SATA interface and 64MB cache. Ideal for desktop PCs, high-capacity data storage, backups, photos, videos and everyday computing needs.',
     description: 'WD Green 2TB Internal Desktop Hard Drive provides high-capacity storage for desktop computers. With 2TB of storage, it offers plenty of space for storing documents, photos, videos, music, software, backups and other important files.\n\nThe drive features a SATA interface and 64MB cache, making it suitable for everyday desktop storage requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
-    basePrice: 4499,
-    mrpPrice: 6999,
-    discountPercentage: 35,
+    basePrice: 6499,
+    mrpPrice: 8999,
+    discountPercentage: 28,
     isFeatured: true,
     isTrending: true,
     isBestSeller: true,
@@ -276,7 +276,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       { id: 6, imageUrl: '/products/wd-green-2tb-back.png', isPrimary: false, sortOrder: 2 }
     ],
     variants: [
-      { id: 3, productId: 3, variantName: '2TB SATA 3.5" Desktop HDD', sku: 'HDD-WD-2TB-EZRX', price: 4499, mrpPrice: 6999, attributes: { capacity: '2TB', cache: '64MB' }, isDefault: true, stock: 50 }
+      { id: 3, productId: 3, variantName: '2TB SATA 3.5" Desktop HDD', sku: 'HDD-WD-2TB-EZRX', price: 6499, mrpPrice: 8999, attributes: { capacity: '2TB', cache: '64MB' }, isDefault: true, stock: 50 }
     ],
     specifications: [
       { fieldKey: 'brand', fieldName: 'Brand', fieldValue: 'Western Digital (WD)', groupName: 'General' },
@@ -301,9 +301,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     category: INITIAL_CATEGORIES[2],
     shortDescription: 'WD Green 3TB WD30EZRX 3.5-inch Internal Desktop Hard Drive with SATA interface and 64MB cache. Ideal for desktop PCs, high-capacity storage, data backup, photos, videos and everyday computing needs.',
     description: 'WD Green 3TB Internal Desktop Hard Drive is designed to provide high-capacity storage for desktop computers. With 3TB of storage capacity, it provides ample space for storing large collections of documents, photos, videos, music, software, backups and other important files.\n\nThe drive features a SATA interface and 64MB cache, making it suitable for everyday desktop storage requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
-    basePrice: 5899,
-    mrpPrice: 8999,
-    discountPercentage: 34,
+    basePrice: 7499,
+    mrpPrice: 10999,
+    discountPercentage: 32,
     isFeatured: true,
     isTrending: true,
     isBestSeller: true,
@@ -321,7 +321,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       { id: 8, imageUrl: '/products/wd-green-3tb-back.png', isPrimary: false, sortOrder: 2 }
     ],
     variants: [
-      { id: 4, productId: 4, variantName: '3TB SATA 3.5" Desktop HDD', sku: 'HDD-WD-3TB-EZRX', price: 5899, mrpPrice: 8999, attributes: { capacity: '3TB', cache: '64MB' }, isDefault: true, stock: 40 }
+      { id: 4, productId: 4, variantName: '3TB SATA 3.5" Desktop HDD', sku: 'HDD-WD-3TB-EZRX', price: 7499, mrpPrice: 10999, attributes: { capacity: '3TB', cache: '64MB' }, isDefault: true, stock: 40 }
     ],
     specifications: [
       { fieldKey: 'brand', fieldName: 'Brand', fieldValue: 'Western Digital (WD)', groupName: 'General' },
@@ -335,6 +335,51 @@ export const INITIAL_PRODUCTS: Product[] = [
       { fieldKey: 'drive_tech', fieldName: 'Drive Technology', fieldValue: 'Mechanical Hard Disk', groupName: 'Technical' },
       { fieldKey: 'compatibility', fieldName: 'Compatibility', fieldValue: 'Desktop PC / Computer', groupName: 'General' },
       { fieldKey: 'ideal_for', fieldName: 'Ideal For', fieldValue: 'Data Storage, Backup, Photos, Videos, Documents & General Computing', groupName: 'Usage' }
+    ]
+  },
+  {
+    id: 5,
+    name: 'WD Green 4TB Internal Desktop Hard Drive (WD40EZRX)',
+    slug: 'wd-green-4tb-internal-desktop-hard-drive-wd40ezrx',
+    sku: 'HDD-WD-4TB-EZRX',
+    brand: INITIAL_BRANDS[9],
+    category: INITIAL_CATEGORIES[2],
+    shortDescription: 'WD Green 4TB WD40EZRX 3.5-inch Internal Desktop Hard Drive with SATA interface and 64MB cache. Ideal for desktop PCs, high-capacity data storage, backups, photos, videos and media storage.',
+    description: 'WD Green 4TB Internal Desktop Hard Drive is a high-capacity storage solution designed for compatible desktop computers. With 4TB of storage capacity, it provides plenty of space for large collections of photos, videos, documents, music, software, backups and other digital files.\n\nThe drive features a SATA interface and 64MB cache, making it suitable for general desktop storage and data backup requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
+    basePrice: 9999,
+    mrpPrice: 13999,
+    discountPercentage: 29,
+    isFeatured: true,
+    isTrending: true,
+    isBestSeller: true,
+    isDealOfTheDay: true,
+    isNewArrival: true,
+    isActive: true,
+    warrantyInfo: '2 Years Manufacturer Warranty',
+    ratingAverage: 4.9,
+    ratingCount: 410,
+    soldCount: 1450,
+    stock: 35,
+    createdAt: '2026-08-20T00:00:00Z',
+    images: [
+      { id: 9, imageUrl: '/products/wd-green-4tb-front.png', isPrimary: true, sortOrder: 1 },
+      { id: 10, imageUrl: '/products/wd-green-4tb-back.png', isPrimary: false, sortOrder: 2 }
+    ],
+    variants: [
+      { id: 5, productId: 5, variantName: '4TB SATA 3.5" Desktop HDD', sku: 'HDD-WD-4TB-EZRX', price: 9999, mrpPrice: 13999, attributes: { capacity: '4TB', cache: '64MB' }, isDefault: true, stock: 35 }
+    ],
+    specifications: [
+      { fieldKey: 'brand', fieldName: 'Brand', fieldValue: 'Western Digital (WD)', groupName: 'General' },
+      { fieldKey: 'series', fieldName: 'Product Series', fieldValue: 'WD Green', groupName: 'General' },
+      { fieldKey: 'model', fieldName: 'Model Number', fieldValue: 'WD40EZRX', groupName: 'General' },
+      { fieldKey: 'capacity', fieldName: 'Storage Capacity', fieldValue: '4TB (4,000 GB)', groupName: 'Storage' },
+      { fieldKey: 'form_factor', fieldName: 'Form Factor', fieldValue: '3.5 Inch', groupName: 'Physical' },
+      { fieldKey: 'interface', fieldName: 'Interface', fieldValue: 'SATA', groupName: 'Performance' },
+      { fieldKey: 'cache', fieldName: 'Cache Memory', fieldValue: '64MB', groupName: 'Performance' },
+      { fieldKey: 'type', fieldName: 'Drive Type', fieldValue: 'Internal Mechanical HDD', groupName: 'Technical' },
+      { fieldKey: 'drive_tech', fieldName: 'Drive Technology', fieldValue: 'Mechanical Hard Disk', groupName: 'Technical' },
+      { fieldKey: 'compatibility', fieldName: 'Compatibility', fieldValue: 'Desktop PC / Computer', groupName: 'General' },
+      { fieldKey: 'ideal_for', fieldName: 'Ideal For', fieldValue: 'High-Capacity Storage, Data Backup, Photos, Videos, Documents & Media', groupName: 'Usage' }
     ]
   }
 ];
@@ -430,6 +475,19 @@ export const INITIAL_REVIEWS: Review[] = [
     isApproved: true,
     createdAt: '2026-08-20T08:45:00Z',
     likesCount: 25
+  },
+  {
+    id: 5,
+    productId: 5,
+    userId: 6,
+    userName: 'Pradeep Chawla',
+    rating: 5,
+    title: 'Monster 4TB Storage for Video Editing & Backups',
+    comment: 'Massive 4TB storage space for my RAW footage and backup archives. Works flawlessly on SATA with 64MB cache. Highly recommended!',
+    isVerifiedPurchase: true,
+    isApproved: true,
+    createdAt: '2026-08-20T14:10:00Z',
+    likesCount: 31
   }
 ];
 

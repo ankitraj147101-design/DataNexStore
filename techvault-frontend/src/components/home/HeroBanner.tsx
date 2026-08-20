@@ -13,13 +13,28 @@ import {
 const HERO_SLIDES = [
   {
     id: 1,
+    badge: 'WESTERN DIGITAL • 4TB MONSTER STORAGE',
+    title: 'WD Green 4TB Desktop HDD',
+    subtitle: 'Massive Capacity 3.5" Storage & Backup (WD40EZRX)',
+    description: 'High-capacity storage powerhouse for desktop computers. With 4TB of storage, enjoy endless space for 4K video editing, RAW photo libraries, game archives, and complete system image backups.',
+    price: '₹9,999',
+    mrp: '₹13,999',
+    discount: '29% OFF',
+    slug: 'wd-green-4tb-internal-desktop-hard-drive-wd40ezrx',
+    image: '/products/wd-green-4tb-front.png',
+    bgGradient: 'from-emerald-50/90 via-sky-50/40 to-white',
+    accentBadge: 'bg-emerald-100/80 text-emerald-900 border-emerald-200',
+    glowColor: 'shadow-emerald-500/10'
+  },
+  {
+    id: 2,
     badge: 'WESTERN DIGITAL • 3TB HIGH CAPACITY',
     title: 'WD Green 3TB Desktop HDD',
     subtitle: 'High-Capacity 3.5" Storage & Backup (WD30EZRX)',
     description: 'Designed to provide high-capacity storage for desktop computers. Packed with 3TB capacity, SATA interface, and 64MB cache for heavy media libraries, 4K videos, software, and complete PC backups.',
-    price: '₹5,899',
-    mrp: '₹8,999',
-    discount: '34% OFF',
+    price: '₹7,499',
+    mrp: '₹10,999',
+    discount: '32% OFF',
     slug: 'wd-green-3tb-internal-desktop-hard-drive-wd30ezrx',
     image: '/products/wd-green-3tb-front.png',
     bgGradient: 'from-emerald-50/90 via-teal-50/40 to-white',
@@ -27,14 +42,14 @@ const HERO_SLIDES = [
     glowColor: 'shadow-emerald-500/10'
   },
   {
-    id: 2,
+    id: 3,
     badge: 'WESTERN DIGITAL • 2TB DESKTOP HDD',
     title: 'WD Green 2TB Desktop HDD',
     subtitle: 'Mass Storage & System Backup Drive (WD20EZRX)',
     description: 'High-capacity 2TB internal mechanical hard drive featuring SATA connectivity and 64MB cache. Ideal for desktop PCs, documents, multimedia archiving, and reliable everyday computing.',
-    price: '₹4,499',
-    mrp: '₹6,999',
-    discount: '35% OFF',
+    price: '₹6,499',
+    mrp: '₹8,999',
+    discount: '28% OFF',
     slug: 'wd-green-2tb-internal-desktop-hard-drive-wd20ezrx',
     image: '/products/wd-green-2tb-front.png',
     bgGradient: 'from-emerald-50/80 via-slate-50/40 to-white',
@@ -42,7 +57,7 @@ const HERO_SLIDES = [
     glowColor: 'shadow-emerald-500/10'
   },
   {
-    id: 3,
+    id: 4,
     badge: 'WESTERN DIGITAL • 7200 RPM CLASS',
     title: 'WD Blue 1TB Desktop HDD',
     subtitle: 'High-Performance 3.5" Internal Mechanical Hard Drive (WD10EZEX)',
@@ -57,7 +72,7 @@ const HERO_SLIDES = [
     glowColor: 'shadow-blue-500/10'
   },
   {
-    id: 4,
+    id: 5,
     badge: 'WESTERN DIGITAL • 64MB CACHE',
     title: 'WD Blue 500GB Desktop HDD',
     subtitle: 'Reliable Everyday Desktop Storage & Backup (WD5000AZRZ)',
