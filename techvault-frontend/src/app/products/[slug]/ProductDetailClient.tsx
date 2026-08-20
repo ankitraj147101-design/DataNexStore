@@ -387,7 +387,7 @@ export default function ProductDetailClient({ slug }: ProductDetailClientProps) 
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-baseline justify-between">
               <div className="space-y-1">
                 <div className="text-[11px] text-slate-500 font-mono uppercase tracking-wider">
-                  Special Online Price (Inc. 18% GST)
+                  Special Online Deal Price
                 </div>
                 <div className="flex items-baseline gap-3">
                   <span className="text-3xl sm:text-4xl font-black text-slate-950 font-mono tracking-tight">

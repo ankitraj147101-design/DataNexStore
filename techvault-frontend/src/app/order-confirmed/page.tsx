@@ -123,8 +123,8 @@ ${itemsList}
 ────────────────────────────────────────
 💰 *BILLING & INVOICE BREAKDOWN:*
 • *Item Subtotal:* ₹${latestOrder.subtotal.toLocaleString()}
-${latestOrder.discountAmount > 0 ? `• *Coupon Discount (${latestOrder.couponCode}):* -₹${latestOrder.discountAmount.toLocaleString()}\n` : ''}• *Express Air Courier:* FREE (₹0)
-• *GST (18% Included):* ₹${latestOrder.taxAmount.toFixed(2)}
+• *Express Air Courier:* FREE (₹0)
+• *Taxes & Handling:* Included
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💵 *NET TOTAL PAYABLE:* *₹${latestOrder.totalAmount.toLocaleString()}*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -319,7 +319,7 @@ ${latestOrder.discountAmount > 0 ? `• *Coupon Discount (${latestOrder.couponCo
               <span className="text-emerald-700 font-bold">FREE</span>
             </div>
             <div className="flex justify-between text-slate-500 text-[11px]">
-              <span>18% GST (Included)</span>
+              <span>Taxes & Handling (Included)</span>
               <span>₹{latestOrder.taxAmount.toFixed(2)}</span>
             </div>
             <div className="pt-2 border-t border-slate-200 flex justify-between font-bold text-base text-slate-900">

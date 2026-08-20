@@ -426,10 +426,10 @@ export default function DashboardPage() {
               <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xs">
                 <div>
                   <h2 className="text-xl font-black text-slate-900 tracking-tight">
-                    Profile & Business Tax Settings
+                    Profile & Contact Settings
                   </h2>
                   <p className="text-xs text-slate-500 font-mono mt-0.5">
-                    Update your primary account details and GSTIN for official B2B invoice generation.
+                    Update your primary account details and communication preferences.
                   </p>
                 </div>
 
@@ -491,14 +491,14 @@ export default function DashboardPage() {
 
                   <div>
                     <label className="text-xs font-bold text-slate-800 block mb-1.5">
-                      Business GSTIN (Optional — for 18% Input Tax Credit Tax Invoice)
+                      Company / Organization Name (Optional)
                     </label>
                     <input
                       type="text"
                       value={gstin}
-                      onChange={(e) => setGstin(e.target.value.toUpperCase())}
-                      placeholder="e.g. GSTIN (Optional)"
-                      className="w-full bg-slate-50 text-xs text-slate-900 p-3.5 rounded-2xl border border-slate-200 focus:border-sky-500 focus:outline-none font-mono"
+                      onChange={(e) => setGstin(e.target.value)}
+                      placeholder="e.g. Acme Tech Corp"
+                      className="w-full bg-slate-50 text-xs text-slate-900 p-3.5 rounded-2xl border border-slate-200 focus:border-sky-500 focus:outline-none"
                     />
                   </div>
 

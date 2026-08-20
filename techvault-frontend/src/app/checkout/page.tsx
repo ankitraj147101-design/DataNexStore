@@ -140,8 +140,8 @@ ${itemsList}
 ────────────────────────────────────────
 💰 *BILLING & INVOICE BREAKDOWN:*
 • *Item Subtotal:* ₹${subtotal.toLocaleString()}
-${discount > 0 ? `• *Coupon Discount (${appliedCoupon?.code}):* -₹${discount.toLocaleString()}\n` : ''}• *Express Air Courier:* FREE (₹0)
-• *GST (18% Included):* ₹${taxAmount.toFixed(2)}
+• *Express Air Courier:* FREE (₹0)
+• *Taxes & Handling:* Included
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💵 *NET TOTAL PAYABLE:* *₹${finalTotal.toLocaleString()}*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -531,7 +531,7 @@ ${discount > 0 ? `• *Coupon Discount (${appliedCoupon?.code}):* -₹${discount
                   </label>
                   <textarea
                     rows={2}
-                    placeholder="e.g. Please share GST Invoice on WhatsApp or call before delivery..."
+                    placeholder="e.g. Please call before delivery or share package handling notes..."
                     value={orderNotes}
                     onChange={(e) => setOrderNotes(e.target.value)}
                     className="w-full bg-slate-50 text-xs text-slate-900 p-3 rounded-xl border border-slate-200 focus:border-sky-500 focus:outline-none"
@@ -588,7 +588,7 @@ ${discount > 0 ? `• *Coupon Discount (${appliedCoupon?.code}):* -₹${discount
                       A complete <strong>Itemized Invoice Bill</strong> with your address, items, and total amount (₹{finalTotal.toLocaleString()}) will open directly on our official WhatsApp desk: <strong>+91 9911371218</strong>.
                     </li>
                     <li>
-                      Our team will instantly accept and confirm your order, share the store payment QR / UPI ID on WhatsApp, and issue your official GST invoice.
+                      Our team will instantly accept and confirm your order, share the store payment QR / UPI ID on WhatsApp, and issue your official order invoice.
                     </li>
                     <li>
                       An automated email notification will simultaneously be logged to <strong>Datanexstore@gmail.com</strong> and <strong>{customerEmail}</strong>.

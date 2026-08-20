@@ -300,7 +300,7 @@ export default function CartPage() {
                   </div>
 
                   <div className="flex justify-between text-slate-500 text-[11px]">
-                    <span>Estimated 18% GST (Included)</span>
+                    <span>Taxes & Handling (Included)</span>
                     <span>₹{taxAmount.toFixed(2)}</span>
                   </div>
 
