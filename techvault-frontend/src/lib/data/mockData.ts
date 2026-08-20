@@ -491,103 +491,34 @@ export const INITIAL_REVIEWS: Review[] = [
   }
 ];
 
-export const INITIAL_ORDERS: Order[] = [
-  {
-    id: 1,
-    orderNumber: 'DNX-2026-89412',
-    userId: 2,
-    customerName: 'Rohan Sharma',
-    customerEmail: 'customer@datanexstore.in',
-    customerPhone: '+91 9911371218',
-    status: 'DELIVERED',
-    subtotal: 3499,
-    discountAmount: 0,
-    couponCode: undefined,
-    shippingCharge: 0,
-    taxAmount: 629.82,
-    totalAmount: 3499,
-    shippingAddress: {
-      id: 'addr-1',
-      fullName: 'Rohan Sharma',
-      phone: '+91 9911371218',
-      addressLine1: 'Flat 402, Skyline Residency, Outer Ring Road',
-      city: 'Bengaluru',
-      state: 'Karnataka',
-      pincode: '560103',
-      country: 'India',
-      addressType: 'HOME',
-      isDefault: true
-    },
-    billingAddress: {
-      id: 'addr-1',
-      fullName: 'Rohan Sharma',
-      phone: '+91 9911371218',
-      addressLine1: 'Flat 402, Skyline Residency, Outer Ring Road',
-      city: 'Bengaluru',
-      state: 'Karnataka',
-      pincode: '560103',
-      country: 'India',
-      addressType: 'HOME'
-    },
-    payment: {
-      id: 'pay_wa_9821738',
-      paymentMethod: 'WHATSAPP_PAYMENT',
-      amount: 3499,
-      currency: 'INR',
-      status: 'SUCCESS',
-      paidAt: '2026-08-18T12:04:22Z'
-    },
-    items: [
-      {
-        id: 1,
-        productId: 2,
-        productName: 'WD Blue 1TB Internal Desktop Hard Drive 7200 RPM (WD10EZEX)',
-        variantName: '1TB 7200 RPM 3.5" Desktop HDD',
-        sku: 'HDD-WD-1TB-EZEX',
-        imageUrl: '/products/wd-blue-1tb-front.png',
-        unitPrice: 3499,
-        quantity: 1,
-        totalPrice: 3499
-      }
-    ],
-    courierName: 'Blue Dart Air Express',
-    trackingNumber: 'BLUEDART-882941029',
-    trackingUrl: 'https://www.bluedart.com',
-    whatsappConfirmed: true,
-    whatsappConfirmedAt: '2026-08-18T12:10:00Z',
-    deliveredAt: '2026-08-20T15:20:00Z',
-    createdAt: '2026-08-18T12:00:00Z',
-    updatedAt: '2026-08-20T15:20:00Z'
-  }
-];
+export const INITIAL_ORDERS: Order[] = [];
 
 export const INITIAL_ADMIN_STATS: AdminDashboardStats = {
-  totalRevenue: 3485000,
-  todayRevenue: 248900,
-  totalOrders: 218,
-  pendingOrders: 8,
-  totalCustomers: 1540,
-  totalProducts: 26,
-  lowStockCount: 3,
+  totalRevenue: 0,
+  todayRevenue: 0,
+  totalOrders: 0,
+  pendingOrders: 0,
+  totalCustomers: 0,
+  totalProducts: 5,
+  lowStockCount: 0,
   outOfStockCount: 0,
   revenueHistory: [
-    { date: '12 Aug', revenue: 340000, orders: 22 },
-    { date: '13 Aug', revenue: 290000, orders: 19 },
-    { date: '14 Aug', revenue: 410000, orders: 28 },
-    { date: '15 Aug', revenue: 580000, orders: 36 },
-    { date: '16 Aug', revenue: 480000, orders: 31 },
-    { date: '17 Aug', revenue: 635900, orders: 42 },
-    { date: '18 Aug', revenue: 749000, orders: 48 }
+    { date: '15 Aug', revenue: 0, orders: 0 },
+    { date: '16 Aug', revenue: 0, orders: 0 },
+    { date: '17 Aug', revenue: 0, orders: 0 },
+    { date: '18 Aug', revenue: 0, orders: 0 },
+    { date: '19 Aug', revenue: 0, orders: 0 },
+    { date: '20 Aug', revenue: 0, orders: 0 },
+    { date: '21 Aug', revenue: 0, orders: 0 }
   ],
   categorySales: [
-    { category: 'Keyboards', value: 1120000, count: 58 },
-    { category: 'NVMe SSDs', value: 920000, count: 64 },
-    { category: 'Gaming Monitors', value: 780000, count: 12 },
-    { category: 'Gaming Mice', value: 510000, count: 44 },
-    { category: 'Desktop CPUs', value: 385000, count: 10 }
+    { category: 'Hard Disk Drives (HDD)', value: 0, count: 5 }
   ],
   topSellingProducts: [
-    { id: 2, name: 'WD Blue 1TB Internal Desktop Hard Drive 7200 RPM', soldCount: 1250, revenue: 4373750 },
-    { id: 1, name: 'WD Blue 500GB Internal Desktop Hard Drive', soldCount: 640, revenue: 1215360 }
+    { id: 5, name: 'WD Green 4TB Internal Desktop Hard Drive (WD40EZRX)', soldCount: 0, revenue: 0 },
+    { id: 4, name: 'WD Green 3TB Internal Desktop Hard Drive (WD30EZRX)', soldCount: 0, revenue: 0 },
+    { id: 3, name: 'WD Green 2TB Internal Desktop Hard Drive (WD20EZRX)', soldCount: 0, revenue: 0 },
+    { id: 2, name: 'WD Blue 1TB Internal Desktop Hard Drive 7200 RPM (WD10EZEX)', soldCount: 0, revenue: 0 },
+    { id: 1, name: 'WD Blue 500GB Internal Desktop Hard Drive (WD5000AZRZ)', soldCount: 0, revenue: 0 }
   ]
 };

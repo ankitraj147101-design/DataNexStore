@@ -59,22 +59,25 @@ export default function AdminDashboardPage() {
   const inTransitOrders = orders.filter((o) => o.status === 'SHIPPED' || o.status === 'OUT_FOR_DELIVERY').length;
   const deliveredOrders = orders.filter((o) => o.status === 'DELIVERED').length;
 
+  const totalGMV = orders.reduce((sum, o) => sum + o.totalAmount, 0);
+  const todayDateStr = new Date().toISOString().split('T')[0];
+  const todayRevenue = orders.filter((o) => o.createdAt?.startsWith(todayDateStr)).reduce((sum, o) => sum + o.totalAmount, 0);
   const totalUnitsInStock = products.reduce((acc, p) => acc + p.stock, 0);
 
   // Executive Top Stat Cards
   const statCards = [
     {
       title: 'Gross Merchandise Value (GMV)',
-      value: `₹${adminStats.totalRevenue.toLocaleString()}`,
-      subtitle: '+24.6% vs previous month',
+      value: `₹${totalGMV.toLocaleString()}`,
+      subtitle: `${orders.length} Total Verified Order(s)`,
       isPositive: true,
       icon: DollarSign,
       color: 'from-sky-500/10 to-blue-500/5 text-sky-700 border-sky-200'
     },
     {
       title: "Today's Verified Inflow",
-      value: `₹${adminStats.todayRevenue.toLocaleString()}`,
-      subtitle: '34 Orders Processed Today',
+      value: `₹${todayRevenue.toLocaleString()}`,
+      subtitle: `${orders.filter((o) => o.createdAt?.startsWith(todayDateStr)).length} Order(s) Processed Today`,
       isPositive: true,
       icon: TrendingUp,
       color: 'from-emerald-500/10 to-teal-500/5 text-emerald-700 border-emerald-200'
@@ -90,7 +93,7 @@ export default function AdminDashboardPage() {
     {
       title: 'Warehouse Stock Health',
       value: `${totalUnitsInStock} Units`,
-      subtitle: `${lowStockCount} SKUs below minimum buffer`,
+      subtitle: `${products.length} Active Hard Drive SKUs`,
       isPositive: lowStockCount === 0,
       icon: AlertTriangle,
       color: 'from-amber-500/10 to-orange-500/5 text-amber-700 border-amber-200'
@@ -325,38 +328,48 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="divide-y divide-slate-100">
-            {orders.slice(0, 5).map((order) => (
-              <div key={order.id} className="py-3.5 flex items-center justify-between gap-3 text-xs">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="font-black text-slate-900 font-mono">{order.orderNumber || `ORD-${order.id}`}</span>
-                    <span
-                      className={`text-[9px] font-black px-2 py-0.5 rounded-full font-mono uppercase ${
-                        order.status === 'DELIVERED'
-                          ? 'bg-emerald-100 text-emerald-800'
-                          : order.status === 'SHIPPED' || order.status === 'OUT_FOR_DELIVERY'
-                          ? 'bg-blue-100 text-blue-800'
-                          : 'bg-amber-100 text-amber-800'
-                      }`}
-                    >
-                      {order.status}
-                    </span>
-                  </div>
-                  <div className="text-slate-500 font-mono text-[11px]">
-                    {order.customerName} • {order.items.length} Item(s) • Blue Dart #{order.trackingNumber || 'AWB-PENDING'}
-                  </div>
-                </div>
-
-                <div className="text-right font-mono">
-                  <div className="font-black text-slate-950 text-sm">
-                    ₹{order.totalAmount.toLocaleString()}
-                  </div>
-                  <div className="text-[10px] text-slate-400">
-                    {order.payment?.paymentMethod || 'PREPAID'}
-                  </div>
-                </div>
+            {orders.length === 0 ? (
+              <div className="py-10 text-center text-slate-400 font-mono text-xs space-y-2">
+                <ShoppingBag className="w-8 h-8 mx-auto text-slate-300 stroke-[1.5]" />
+                <p className="font-bold text-slate-700">No Orders Placed Yet</p>
+                <p className="text-[11px] text-slate-500 max-w-xs mx-auto">
+                  Live customer orders placed via website or WhatsApp checkout will appear here in real-time.
+                </p>
               </div>
-            ))}
+            ) : (
+              orders.slice(0, 5).map((order) => (
+                <div key={order.id} className="py-3.5 flex items-center justify-between gap-3 text-xs">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="font-black text-slate-900 font-mono">{order.orderNumber || `ORD-${order.id}`}</span>
+                      <span
+                        className={`text-[9px] font-black px-2 py-0.5 rounded-full font-mono uppercase ${
+                          order.status === 'DELIVERED'
+                            ? 'bg-emerald-100 text-emerald-800'
+                            : order.status === 'SHIPPED' || order.status === 'OUT_FOR_DELIVERY'
+                            ? 'bg-blue-100 text-blue-800'
+                            : 'bg-amber-100 text-amber-800'
+                        }`}
+                      >
+                        {order.status}
+                      </span>
+                    </div>
+                    <div className="text-slate-500 font-mono text-[11px]">
+                      {order.customerName} • {order.items.length} Item(s) • Blue Dart #{order.trackingNumber || 'AWB-PENDING'}
+                    </div>
+                  </div>
+
+                  <div className="text-right font-mono">
+                    <div className="font-black text-slate-950 text-sm">
+                      ₹{order.totalAmount.toLocaleString()}
+                    </div>
+                    <div className="text-[10px] text-slate-400">
+                      {order.payment?.paymentMethod || 'PREPAID'}
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 
@@ -381,34 +394,44 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="space-y-3">
-            {products
-              .filter((p) => p.stock <= 5)
-              .slice(0, 4)
-              .map((prod) => (
-                <div
-                  key={prod.id}
-                  className="p-3 rounded-2xl bg-amber-50/50 border border-amber-200/80 flex items-center justify-between text-xs font-mono"
-                >
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={prod.images[0]?.imageUrl}
-                      alt={prod.name}
-                      className="w-10 h-10 rounded-xl object-contain bg-white p-1 border border-slate-200"
-                    />
-                    <div>
-                      <div className="font-bold text-slate-900 line-clamp-1">{prod.name}</div>
-                      <div className="text-[10px] text-slate-500">SKU: {prod.sku}</div>
-                    </div>
-                  </div>
-
-                  <div className="text-right">
-                    <div className="text-xs font-black text-red-600">
-                      {prod.stock} Left in Hub
-                    </div>
-                    <div className="text-[10px] text-slate-400">Reorder Level: 10</div>
-                  </div>
+            {products.filter((p) => p.stock <= 5).length === 0 ? (
+              <div className="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 flex items-center gap-3 text-xs font-mono text-emerald-800">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <div>
+                  <div className="font-bold">All 5 SKUs Fully Stocked</div>
+                  <div className="text-[11px] text-emerald-700">Total buffer: {totalUnitsInStock} genuine sealed hard drives in warehouse.</div>
                 </div>
-              ))}
+              </div>
+            ) : (
+              products
+                .filter((p) => p.stock <= 5)
+                .slice(0, 4)
+                .map((prod) => (
+                  <div
+                    key={prod.id}
+                    className="p-3 rounded-2xl bg-amber-50/50 border border-amber-200/80 flex items-center justify-between text-xs font-mono"
+                  >
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={prod.images[0]?.imageUrl}
+                        alt={prod.name}
+                        className="w-10 h-10 rounded-xl object-contain bg-white p-1 border border-slate-200"
+                      />
+                      <div>
+                        <div className="font-bold text-slate-900 line-clamp-1">{prod.name}</div>
+                        <div className="text-[10px] text-slate-500">SKU: {prod.sku}</div>
+                      </div>
+                    </div>
+
+                    <div className="text-right">
+                      <div className="text-xs font-black text-red-600">
+                        {prod.stock} Left in Hub
+                      </div>
+                      <div className="text-[10px] text-slate-400">Reorder Level: 10</div>
+                    </div>
+                  </div>
+                ))
+            )}
           </div>
         </div>
       </div>
