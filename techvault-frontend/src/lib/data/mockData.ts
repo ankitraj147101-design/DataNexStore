@@ -18,144 +18,50 @@ export const INITIAL_BRANDS: Brand[] = [
 export const INITIAL_CATEGORIES: Category[] = [
   {
     id: 1,
-    name: 'Keyboards',
-    slug: 'keyboards',
-    description: 'Custom mechanical, wireless, and optical keyboards engineered for tactile precision and acoustics',
-    imageUrl: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80',
+    name: 'Hard Disk Drives (HDD)',
+    slug: 'hdd',
+    description: 'Genuine Western Digital internal 3.5-inch desktop hard drives for mass storage, video archiving, and reliable backups',
+    imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=600&q=80',
     sortOrder: 1,
     isActive: true,
-    productCount: 14,
+    productCount: 5,
     specFields: [
-      { id: 1, fieldName: 'Switch Type', fieldKey: 'switch_type', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['Cherry MX Red', 'Gateron Yellow', 'Keychron K Pro Red', 'Optical Linear', 'Tactile Brown'] },
-      { id: 2, fieldName: 'Layout', fieldKey: 'layout', fieldType: 'select', isFilterable: true, sortOrder: 2, options: ['Full Size (100%)', 'TKL (80%)', '75%', '65%', '60%'] },
-      { id: 3, fieldName: 'Connection', fieldKey: 'connection', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['Wired', 'Wireless', 'Bluetooth + 2.4GHz + Wired'] },
-      { id: 4, fieldName: 'Hot Swappable', fieldKey: 'hot_swappable', fieldType: 'boolean', isFilterable: true, sortOrder: 4 },
-      { id: 5, fieldName: 'RGB Backlight', fieldKey: 'rgb', fieldType: 'boolean', isFilterable: true, sortOrder: 5 }
+      { id: 1, fieldName: 'Capacity', fieldKey: 'capacity', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['500GB', '1TB', '2TB', '3TB', '4TB'] },
+      { id: 2, fieldName: 'Form Factor', fieldKey: 'form_factor', fieldType: 'select', isFilterable: true, sortOrder: 2, options: ['3.5 Inch'] },
+      { id: 3, fieldName: 'Interface', fieldKey: 'interface', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['SATA', 'SATA 6Gb/s'] },
+      { id: 4, fieldName: 'Cache', fieldKey: 'cache', fieldType: 'select', isFilterable: true, sortOrder: 4, options: ['64MB'] }
     ]
   },
   {
     id: 2,
-    name: 'Gaming Mice',
-    slug: 'mouse',
-    description: 'Ultralight esports mice, optical sensors up to 32,000 DPI, and sub-millisecond polling rates',
-    imageUrl: 'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80',
+    name: 'RAM (Memory)',
+    slug: 'ram',
+    description: 'High-speed DDR4 & DDR5 enthusiast RAM modules for desktop gaming PCs and workstation upgrades',
+    imageUrl: 'https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?auto=format&fit=crop&w=600&q=80',
     sortOrder: 2,
     isActive: true,
-    productCount: 18,
+    productCount: 0,
     specFields: [
-      { id: 6, fieldName: 'Max DPI', fieldKey: 'max_dpi', fieldType: 'number', isFilterable: true, sortOrder: 1, unit: 'DPI' },
-      { id: 7, fieldName: 'Weight', fieldKey: 'weight', fieldType: 'number', isFilterable: true, sortOrder: 2, unit: 'g' },
-      { id: 8, fieldName: 'Connection', fieldKey: 'connection', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['Wireless', 'Wired', 'Dual Mode'] },
-      { id: 9, fieldName: 'Polling Rate', fieldKey: 'polling_rate', fieldType: 'select', isFilterable: true, sortOrder: 4, options: ['1000Hz', '2000Hz', '4000Hz', '8000Hz'] },
-      { id: 10, fieldName: 'Ergonomics', fieldKey: 'ergonomics', fieldType: 'select', isFilterable: true, sortOrder: 5, options: ['Right-handed', 'Ambidextrous'] }
+      { id: 5, fieldName: 'Capacity', fieldKey: 'capacity', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['8GB', '16GB', '32GB', '64GB'] },
+      { id: 6, fieldName: 'Memory Type', fieldKey: 'type', fieldType: 'select', isFilterable: true, sortOrder: 2, options: ['DDR5', 'DDR4', 'DDR3'] },
+      { id: 7, fieldName: 'Speed', fieldKey: 'speed', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['3200MHz', '3600MHz', '5600MHz', '6000MHz'] }
     ]
   },
   {
     id: 3,
-    name: 'NVMe Solid State Drives',
+    name: 'Solid State Drives (SSD)',
     slug: 'ssd',
-    description: 'High-speed PCIe 4.0 & PCIe 5.0 M.2 SSDs with heatsinks for gaming PCs, laptops, and PS5',
+    description: 'Ultra-fast NVMe M.2 PCIe 4.0 and SATA III solid-state drives for high-performance computing',
     imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=600&q=80',
     sortOrder: 3,
     isActive: true,
-    productCount: 22,
+    productCount: 0,
     specFields: [
-      { id: 11, fieldName: 'Capacity', fieldKey: 'capacity', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['500GB', '1TB', '2TB', '4TB'] },
-      { id: 12, fieldName: 'Interface', fieldKey: 'interface', fieldType: 'select', isFilterable: true, sortOrder: 2, options: ['PCIe 4.0 NVMe', 'PCIe 5.0 NVMe', 'SATA III'] },
-      { id: 13, fieldName: 'Form Factor', fieldKey: 'form_factor', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['M.2 2280', '2.5 inch'] },
-      { id: 14, fieldName: 'Read Speed', fieldKey: 'read_speed', fieldType: 'number', isFilterable: true, sortOrder: 4, unit: 'MB/s' }
+      { id: 8, fieldName: 'Capacity', fieldKey: 'capacity', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['256GB', '512GB', '1TB', '2TB', '4TB'] },
+      { id: 9, fieldName: 'Interface', fieldKey: 'interface', fieldType: 'select', isFilterable: true, sortOrder: 2, options: ['PCIe 4.0 NVMe', 'PCIe 3.0 NVMe', 'SATA III 2.5"'] },
+      { id: 10, fieldName: 'Form Factor', fieldKey: 'form_factor', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['M.2 2280', '2.5 Inch'] }
     ]
-  },
-  {
-    id: 4,
-    name: 'DDR5 & DDR4 Memory',
-    slug: 'ram',
-    description: 'Enthusiast desktop RAM kits featuring low latency timings and AMD EXPO / Intel XMP 3.0 support',
-    imageUrl: 'https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?auto=format&fit=crop&w=600&q=80',
-    sortOrder: 4,
-    isActive: true,
-    productCount: 16,
-    specFields: [
-      { id: 15, fieldName: 'Capacity', fieldKey: 'capacity', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['16GB', '32GB', '64GB', '96GB'] },
-      { id: 16, fieldName: 'Type', fieldKey: 'type', fieldType: 'select', isFilterable: true, sortOrder: 2, options: ['DDR5', 'DDR4'] },
-      { id: 17, fieldName: 'Speed', fieldKey: 'speed', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['5600MHz', '6000MHz', '6400MHz', '7200MHz'] },
-      { id: 18, fieldName: 'RGB', fieldKey: 'rgb', fieldType: 'boolean', isFilterable: true, sortOrder: 4 }
-    ]
-  },
-  {
-    id: 5,
-    name: 'Gaming & Studio Monitors',
-    slug: 'monitors',
-    description: 'High-refresh rate 144Hz - 360Hz Fast IPS, Mini-LED, and 0.03ms OLED displays with HDR support',
-    imageUrl: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80',
-    sortOrder: 5,
-    isActive: true,
-    productCount: 12,
-    specFields: [
-      { id: 19, fieldName: 'Screen Size', fieldKey: 'screen_size', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['24-inch', '27-inch', '32-inch', '34-inch Ultrawide', '49-inch Super Ultrawide'] },
-      { id: 20, fieldName: 'Resolution', fieldKey: 'resolution', fieldType: 'select', isFilterable: true, sortOrder: 2, options: ['1080p FHD', '1440p QHD', '4K UHD'] },
-      { id: 21, fieldName: 'Refresh Rate', fieldKey: 'refresh_rate', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['144Hz', '165Hz', '240Hz', '360Hz'] },
-      { id: 22, fieldName: 'Panel Type', fieldKey: 'panel_type', fieldType: 'select', isFilterable: true, sortOrder: 4, options: ['OLED', 'Fast IPS', 'Mini-LED', 'VA'] }
-    ]
-  },
-  {
-    id: 6,
-    name: 'Processors & CPUs',
-    slug: 'processors',
-    description: 'Latest AMD Ryzen 7000/9000 Series and Intel Core 14th Gen processors for gaming and compute',
-    imageUrl: 'https://images.unsplash.com/photo-1555680202-c86f0e12f086?auto=format&fit=crop&w=600&q=80',
-    sortOrder: 6,
-    isActive: true,
-    productCount: 9,
-    specFields: [
-      { id: 23, fieldName: 'Brand', fieldKey: 'brand_name', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['AMD', 'Intel'] },
-      { id: 24, fieldName: 'Socket', fieldKey: 'socket', fieldType: 'select', isFilterable: true, sortOrder: 2, options: ['AM5', 'AM4', 'LGA1700', 'LGA1851'] },
-      { id: 25, fieldName: 'Cores', fieldKey: 'cores', fieldType: 'number', isFilterable: true, sortOrder: 3 }
-    ]
-  },
-  {
-    id: 7,
-    name: 'Studio Audio & Headsets',
-    slug: 'headphones',
-    description: 'Audiophile spatial sound, active noise cancellation, and high-fidelity wireless Bluetooth headsets',
-    imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80',
-    sortOrder: 7,
-    isActive: true,
-    productCount: 15,
-    specFields: [
-      { id: 26, fieldName: 'Type', fieldKey: 'type', fieldType: 'select', isFilterable: true, sortOrder: 1, options: ['Over-ear', 'In-ear', 'True Wireless'] },
-      { id: 27, fieldName: 'Noise Cancellation', fieldKey: 'noise_cancellation', fieldType: 'boolean', isFilterable: true, sortOrder: 2 },
-      { id: 28, fieldName: 'Connection', fieldKey: 'connection', fieldType: 'select', isFilterable: true, sortOrder: 3, options: ['Bluetooth 5.3', 'Wireless 2.4GHz + Bluetooth', 'Wired 3.5mm'] }
-    ]
-  },
-  {
-    id: 8,
-    name: 'Networking & Mesh Routers',
-    slug: 'wifi-routers',
-    description: 'Tri-Band Wi-Fi 6E and Wi-Fi 7 mesh routers with gigabit ethernet and multi-device MU-MIMO support',
-    imageUrl: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80',
-    sortOrder: 8,
-    isActive: true,
-    productCount: 8
-  },
-  { id: 9, name: 'Graphics Cards', slug: 'graphics-cards', description: 'NVIDIA GeForce RTX 40-Series & AMD Radeon RX 7000 Series GPUs', imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=600&q=80', sortOrder: 9, isActive: true, productCount: 11 },
-  { id: 10, name: 'Motherboards', slug: 'motherboards', description: 'Intel Z790 & AMD X670E / B650 enthusiast workstation motherboards', imageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80', sortOrder: 10, isActive: true, productCount: 14 },
-  { id: 11, name: 'PC Cabinets & Cases', slug: 'pc-cases', description: 'High-airflow panoramic tempered glass chassis for custom desktop builds', imageUrl: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?auto=format&fit=crop&w=600&q=80', sortOrder: 11, isActive: true, productCount: 10 },
-  { id: 12, name: 'Modular Power Supplies', slug: 'power-supplies', description: '80 PLUS Gold & Platinum ATX 3.0 PCIe 5.0 fully modular power supplies', imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=600&q=80', sortOrder: 12, isActive: true, productCount: 8 },
-  { id: 13, name: 'Liquid Coolers & Fans', slug: 'cooling-fans', description: '360mm AIO liquid coolers and high static-pressure PWM ARGB fans', imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=600&q=80', sortOrder: 13, isActive: true, productCount: 15 },
-  { id: 14, name: 'Thermal Compounds', slug: 'thermal-paste', description: 'High thermal conductivity compounds and premium liquid metal interfaces', imageUrl: 'https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=600&q=80', sortOrder: 14, isActive: true, productCount: 6 },
-  { id: 15, name: 'Flash Drives', slug: 'pendrives', description: 'Ultra-fast USB 3.2 Gen 2 flash drives with read speeds up to 1,000 MB/s', imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80', sortOrder: 15, isActive: true, productCount: 12 },
-  { id: 16, name: 'Memory Cards', slug: 'memory-cards', description: 'UHS-II & V90 certified high-bitrate SD and microSD storage cards', imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80', sortOrder: 16, isActive: true, productCount: 9 },
-  { id: 17, name: 'Thunderbolt Docks & Hubs', slug: 'usb-hubs', description: 'Multi-port Thunderbolt 4 docking stations with dual 4K display output', imageUrl: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80', sortOrder: 17, isActive: true, productCount: 7 },
-  { id: 18, name: 'Streaming Webcams', slug: 'webcams', description: 'Ultra HD 4K 60fps streaming webcams with auto-framing and dual mics', imageUrl: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80', sortOrder: 18, isActive: true, productCount: 6 },
-  { id: 19, name: 'Desktop Speakers', slug: 'speakers', description: 'Hi-Fi 2.1 studio monitors with optical inputs and Bluetooth connectivity', imageUrl: 'https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80', sortOrder: 19, isActive: true, productCount: 5 },
-  { id: 20, name: 'Studio Microphones', slug: 'microphones', description: 'Broadcast-grade XLR & USB condenser microphones for streaming and recording', imageUrl: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80', sortOrder: 20, isActive: true, productCount: 8 },
-  { id: 21, name: 'Enterprise Hard Drives', slug: 'hdd', description: 'High-capacity 7,200 RPM CMR enterprise and surveillance hard disk drives', imageUrl: 'https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=600&q=80', sortOrder: 21, isActive: true, productCount: 7 },
-  { id: 22, name: 'Network Switches', slug: 'network-accessories', description: 'Managed gigabit switches, SFP+ transceivers, and PoE power injectors', imageUrl: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80', sortOrder: 22, isActive: true, productCount: 6 },
-  { id: 23, name: 'Cables & Interconnects', slug: 'cables', description: 'Braided HDMI 2.1 48Gbps, DisplayPort 2.1, and 240W USB-C fast charging cables', imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80', sortOrder: 23, isActive: true, productCount: 14 },
-  { id: 24, name: 'Power Adapters & GaN Chargers', slug: 'adapters', description: 'High-wattage GaN fast charging bricks and multi-display display converters', imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80', sortOrder: 24, isActive: true, productCount: 11 },
-  { id: 25, name: 'Laptop Stands & Accessories', slug: 'laptop-accessories', description: 'Ergonomic aluminum laptop risers and active cooling pads', imageUrl: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=600&q=80', sortOrder: 25, isActive: true, productCount: 9 },
-  { id: 26, name: 'Desk Accessories & Matting', slug: 'other-accessories', description: 'Micro-woven extended desk pads, cable management trays, and anti-static toolkits', imageUrl: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80', sortOrder: 26, isActive: true, productCount: 18 }
+  }
 ];
 
 export const INITIAL_PRODUCTS: Product[] = [
@@ -165,7 +71,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     slug: 'wd-blue-500gb-internal-desktop-hard-drive-wd5000azrz',
     sku: 'HDD-WD-500GB-AZRZ',
     brand: INITIAL_BRANDS[9],
-    category: INITIAL_CATEGORIES[2],
+    category: INITIAL_CATEGORIES[0],
     shortDescription: 'WD Blue 500GB 3.5-inch internal desktop hard drive featuring SATA 6Gb/s interface, 64MB cache and 5400 RPM class performance.',
     description: 'WD Blue 500GB Internal Desktop Hard Drive is designed to provide reliable storage for desktop computers. With 500GB capacity, it offers ample space for storing documents, photos, videos, applications and other important data.\n\nThe drive features a SATA 6Gb/s interface, 64MB cache and 5400 RPM class rotational speed, making it suitable for everyday desktop storage requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
     basePrice: 1899,
@@ -209,7 +115,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     slug: 'wd-blue-1tb-internal-desktop-hard-drive-7200rpm-wd10ezex',
     sku: 'HDD-WD-1TB-EZEX',
     brand: INITIAL_BRANDS[9],
-    category: INITIAL_CATEGORIES[2],
+    category: INITIAL_CATEGORIES[0],
     shortDescription: 'WD Blue 1TB 3.5-inch Internal Desktop Hard Drive with SATA interface, 64MB cache and 7200 RPM Class performance for high-speed storage.',
     description: 'WD Blue 1TB Internal Desktop Hard Drive is a reliable storage solution designed for desktop computers. With 1TB of storage capacity, it provides sufficient space for storing documents, photos, videos, software, games and other important data.\n\nFeaturing 64MB cache and 7200 RPM Class performance, this hard drive is suitable for everyday desktop computing and storage requirements. Its 3.5-inch form factor makes it compatible with desktop PC systems that support standard 3.5-inch internal drives.',
     basePrice: 3499,
@@ -253,7 +159,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     slug: 'wd-green-2tb-internal-desktop-hard-drive-wd20ezrx',
     sku: 'HDD-WD-2TB-EZRX',
     brand: INITIAL_BRANDS[9],
-    category: INITIAL_CATEGORIES[2],
+    category: INITIAL_CATEGORIES[0],
     shortDescription: 'WD Green 2TB WD20EZRX 3.5-inch Internal Desktop Hard Drive with SATA interface and 64MB cache. Ideal for desktop PCs, high-capacity data storage, backups, photos, videos and everyday computing needs.',
     description: 'WD Green 2TB Internal Desktop Hard Drive provides high-capacity storage for desktop computers. With 2TB of storage, it offers plenty of space for storing documents, photos, videos, music, software, backups and other important files.\n\nThe drive features a SATA interface and 64MB cache, making it suitable for everyday desktop storage requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
     basePrice: 6499,
@@ -343,7 +249,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     slug: 'wd-green-4tb-internal-desktop-hard-drive-wd40ezrx',
     sku: 'HDD-WD-4TB-EZRX',
     brand: INITIAL_BRANDS[9],
-    category: INITIAL_CATEGORIES[2],
+    category: INITIAL_CATEGORIES[0],
     shortDescription: 'WD Green 4TB WD40EZRX 3.5-inch Internal Desktop Hard Drive with SATA interface and 64MB cache. Ideal for desktop PCs, high-capacity data storage, backups, photos, videos and media storage.',
     description: 'WD Green 4TB Internal Desktop Hard Drive is a high-capacity storage solution designed for compatible desktop computers. With 4TB of storage capacity, it provides plenty of space for large collections of photos, videos, documents, music, software, backups and other digital files.\n\nThe drive features a SATA interface and 64MB cache, making it suitable for general desktop storage and data backup requirements. Its 3.5-inch form factor is designed for compatible desktop PC systems.',
     basePrice: 9999,
